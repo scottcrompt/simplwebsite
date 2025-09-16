@@ -51,25 +51,29 @@
     }
 
     .cb-window {
-      position: fixed;
-      right: 20px;
-      bottom: 90px;
-      width: 360px;
-      max-width: calc(100vw - 40px);
-      height: 520px;
-      background: var(--cb-white);
-      border: 1px solid var(--cb-gray-2);
-      border-radius: 20px;
-      box-shadow: var(--cb-shadow);
-      display: none;
-      flex-direction: column;
-      overflow: hidden;
-      font-family: var(--cb-font);
-      z-index: var(--cb-z);
-      opacity: 0;
-      transform: translateY(6px);
-      transition: opacity .2s ease, transform .2s ease;
-    }
+  position: fixed;
+  right: 20px;
+  bottom: 90px;
+  width: 360px;
+  max-width: calc(100vw - 40px);
+
+  /* change this 👇 */
+  height: calc(100vh - 120px); /* fills screen except for some margin */
+  top: 60px;                   /* pushes it down a bit from the very top */
+
+  background: var(--cb-white);
+  border: 1px solid var(--cb-gray-2);
+  border-radius: 20px;
+  box-shadow: var(--cb-shadow);
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+  font-family: var(--cb-font);
+  z-index: var(--cb-z);
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity .2s ease, transform .2s ease;
+}
     .cb-window.cb-open {
       display: flex;
       opacity: 1;
@@ -201,9 +205,15 @@
     }
 
     @media (max-width: 480px) {
-      .cb-window { right: 10px; left: 10px; width: auto; height: 70vh; }
-      .cb-button { right: 12px; bottom: 12px; }
-    }
+  .cb-window {
+    right: 10px;
+    left: 10px;
+    top: 10px;
+    bottom: 70px;
+    width: auto;
+    height: auto; /* will stretch between top & bottom */
+  }
+}
       .cb-backdrop {
   position: fixed;
   inset: 0;
