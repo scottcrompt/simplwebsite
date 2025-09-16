@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Karst Goods | Home</title>
+<meta name="description" content="Karst Goods crafts sustainable, premium stone paper tools for creativity and productivity. Sydney-born since 2016.">
+<style>
+  :root{
+    --bg:#FFFBF2;
+    --text:#323232;
+    --muted:#6F6C66;
+    --accent:#323232;
+    --accent-contrast:#FFFBF2;
+    --surface:#FFF7E6;
+    --surface-2:#FFF2D6;
+    --line:rgba(50,50,50,.15);
+    --shadow:0 10px 30px rgba(0,0,0,.08);
+    --radius:14px;
+    --radius-sm:10px;
+    --radius-lg:20px;
+    --container:1200px;
+    --gap:24px;
+    --gap-lg:56px;
+    --gap-xl:88px;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    font-family:Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica Neue, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    color:var(--text);
+    background:var(--bg);
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    line-height:1.5;
+  }
+  img,svg,video{max-width:100%; display:block}
+  a{color:inherit; text-decoration:none}
+  .container{max-width:var(--container); margin:0 auto; padding:0 20px}
+  .btn{
+    appearance:none; border:0; background:var(--accent); color:var(--accent-contrast);
+    padding:14px 22px; border-radius:999px; font-weight:600; letter-spacing:.2px;
+    display:inline-flex; align-items:center; gap:10px; cursor:pointer; transition:transform .15s ease, filter .2s ease, box-shadow .2s ease;
+    box-shadow:0 8px 20px rgba(50,50,50,.15);
+  }
+  .btn:hover{transform:translateY(-1px); filter:brightness(1.05)}
+  .btn:active{transform:translateY(0)}
+  .btn.outline{
+    background:transparent; color:var(--text); border:1.5px solid var(--text);
+    box-shadow:none;
+  }
+  .tag{display:inline-block; font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted);}
+  header{
+    position:sticky; top:0; z-index:50; background:rgba(255,251,242,.92); backdrop-filter:saturate(180%) blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between; height:68px;
+  }
+  .brand{
+    display:flex; align-items:center; gap:12px; font-weight:800; letter-spacing:.2px;
+  }
+  .brand-mark{
+    width:36px; height:36px; border-radius:10px; background:var(--accent);
+    display:grid; place-items:center; color:var(--accent-contrast); font-weight:800; font-size:18px;
+  }
+  .nav-links{display:flex; align-items:center; gap:22px}
+  .nav-links a{font-weight:600; opacity:.92}
+  .nav-actions{display:flex; align-items:center; gap:10px}
+  .cart{
+    width:40px; height:40px; border-radius:999px; display:grid; place-items:center; background:transparent; border:1px solid var(--line)
+  }
+  .menu-toggle{
+    display:none; width:40px; height:40px; border-radius:10px; border:1px solid var(--line); background:transparent; align-items:center; justify-content:center;
+  }
+  .menu-toggle span,.menu-toggle span:before,.menu-toggle span:after{
+    content:""; display:block; width:18px; height:2px; background:var(--text); border-radius:2px; position:relative; transition:.2s ease
+  }
+  .menu-toggle span:before{position:absolute; top:-6px}
+  .menu-toggle span:after{position:absolute; top:6px}
+  .mobile-menu{
+    position:fixed; inset:68px 0 auto 0; background:var(--bg); border-bottom:1px solid var(--line); transform:translateY(-110%);
+    transition:transform .25s ease; z-index:40;
+  }
+  .mobile-menu.open{transform:translateY(0)}
+  .mobile-menu nav{display:grid; gap:8px; padding:14px 20px 20px}
+  .mobile-menu a{padding:12px 14px; border:1px solid var(--line); border-radius:10px; font-weight:600}
+  .hero{
+    position:relative; min-height:72vh; display:grid; align-items:center; overflow:hidden; border-bottom:1px solid var(--line);
+    background-image:url("/demos/assets/karstgoods_com_/Background_Image.png");
+    background-size:cover; background-position:center; background-attachment:fixed;
+  }
+  .hero-media{
+    position:absolute; inset:0; overflow:hidden; pointer-events:none;
+  }
+  .hero video{
+    position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:contrast(1.02) saturate(.95) brightness(.98);
+  }
+  .hero::after{
+    content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(255,251,242,.65) 10%, rgba(255,251,242,.75) 40%, rgba(255,251,242,.92) 100%);
+  }
+  .hero-content{position:relative; z-index:2; padding:80px 0}
+  .headline{
+    font-size:clamp(28px, 5vw, 54px); line-height:1.08; letter-spacing:-.02em; font-weight:800; margin:12px 0 20px;
+  }
+  .subtext{max-width:680px; color:var(--muted)}
+  .hero-ctas{display:flex; align-items:center; gap:12px; margin-top:24px; flex-wrap:wrap}
+  .meta{display:flex; align-items:center; gap:14px; margin-top:18px; color:var(--muted); font-size:14px}
+  .dot{width:6px; height:6px; background:var(--muted); border-radius:999px}
+  section{padding:var(--gap-xl) 0}
+  .about{
+    display:grid; grid-template-columns:1.1fr .9fr; gap:var(--gap-lg); align-items:start;
+  }
+  .about-card{
+    background:linear-gradient(180deg, var(--surface) 0%, var(--bg) 100%);
+    border:1px solid var(--line); border-radius:var(--radius-lg); padding:28px; box-shadow:var(--shadow)
+  }
+  .about h3{margin:0 0 10px}
+  .link-row{display:flex; gap:12px; margin-top:14px; flex-wrap:wrap}
+  .link-pill{padding:10px 14px; border-radius:999px; border:1px solid var(--line); background:#fff9; backdrop-filter:blur(4px)}
+  .collections{
+    display:grid; gap:var(--gap); grid-template-columns:repeat(12, 1fr);
+  }
+  .tile{
+    grid-column:span 6; position:relative; border-radius:var(--radius); overflow:hidden; border:1px solid var(--line); background:var(--surface);
+    min-height:200px; box-shadow:var(--shadow);
+  }
+  .tile.large{grid-column:span 12; min-height:280px}
+  .tile-media{
+    position:absolute; inset:0; opacity:.16; background-image:url("/demos/assets/karstgoods_com_/Background_Image.png"); background-size:cover; background-position:center;
+  }
+  .tile-content{
+    position:relative; z-index:2; padding:24px; display:flex; flex-direction:column; justify-content:flex-end; height:100%;
+  }
+  .tile h4{margin:0 0 8px; font-size:20px}
+  .tile a.btn{align-self:flex-start}
+  .spotlight{
+    margin-top:var(--gap-lg); display:grid; grid-template-columns:1.1fr .9fr; gap:var(--gap-lg); align-items:stretch;
+  }
+  .spotlight-media{
+    background:var(--surface); border:1px solid var(--line); border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--shadow)
+  }
+  .spotlight-media img{width:100%; height:100%; object-fit:cover}
+  .spotlight-info{
+    border:1px solid var(--line); border-radius:var(--radius-lg); padding:28px; background:linear-gradient(180deg, var(--bg) 0%, #FFFDEE 100%);
+    display:flex; flex-direction:column; gap:14px; box-shadow:var(--shadow)
+  }
+  .price{font-weight:800; font-size:20px}
+  .benefits{
+    display:grid; grid-template-columns:1fr 1fr; gap:var(--gap-lg); align-items:center;
+  }
+  .benefit-list{
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:14px;
+  }
+  .benefit{
+    border:1px solid var(--line); border-radius:16px; padding:18px; background:var(--surface); text-align:left; box-shadow:var(--shadow)
+  }
+  .benefit svg{width:28px; height:28px; margin-bottom:10px}
+  .benefit h5{margin:0 0 6px; font-size:16px}
+  .benefit p{margin:0; color:var(--muted); font-size:14px}
+  .benefits .illustration{
+    border:1px solid var(--line); border-radius:var(--radius-lg); overflow:hidden; background:var(--surface); box-shadow:var(--shadow)
+  }
+  .reviews{
+    position:relative;
+    background:linear-gradient(180deg, var(--surface) 0%, var(--bg) 100%);
+    border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+  }
+  .reviews-wrap{display:grid; grid-template-columns:1fr .9fr; gap:var(--gap-lg); align-items:center}
+  .reviews-visual{
+    border:1px solid var(--line); border-radius:var(--radius-lg); overflow:hidden; background:#fff; box-shadow:var(--shadow)
+  }
+  .carousel{
+    position:relative; overflow:hidden; border:1px solid var(--line); border-radius:var(--radius-lg); background:var(--bg); box-shadow:var(--shadow)
+  }
+  .carousel-track{
+    display:flex; transition:transform .5s ease; will-change:transform
+  }
+  .review{
+    flex:0 0 100%; padding:24px; min-height:220px; display:flex; flex-direction:column; gap:12px; justify-content:center
+  }
+  .stars{color:#F4B400; letter-spacing:2px; font-size:18px}
+  .review cite{font-style:normal; color:var(--muted); font-size:14px}
+  .carousel-nav{
+    position:absolute; inset:auto 12px 12px auto; display:flex; gap:8px
+  }
+  .carousel-btn{
+    width:40px; height:40px; border-radius:10px; border:1px solid var(--line); background:rgba(255,255,255,.7); display:grid; place-items:center; backdrop-filter:blur(4px)
+  }
+  .sustain{
+    display:grid; grid-template-columns:1fr 1fr; gap:var(--gap-lg); align-items:center;
+  }
+  .badges{
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:12px; margin-top:12px
+  }
+  .badge{
+    border:1px solid var(--line); border-radius:12px; padding:14px; background:var(--surface); text-align:center; box-shadow:var(--shadow)
+  }
+  .newsletter{
+    display:grid; grid-template-columns:1fr 1fr; gap:var(--gap-lg); align-items:center
+  }
+  .signup{
+    border:1px solid var(--line); border-radius:var(--radius-lg); padding:22px; background:linear-gradient(180deg, var(--surface) 0%, var(--bg) 100%); box-shadow:var(--shadow)
+  }
+  .form{
+    display:flex; gap:10px; margin-top:12px; flex-wrap:wrap
+  }
+  .form input{
+    flex:1 1 260px; padding:14px 16px; border-radius:999px; border:1px solid var(--line); background:#fff; color:var(--text); outline:none
+  }
+  .social{
+    display:flex; gap:12px; margin-top:14px
+  }
+  .social a{
+    width:44px; height:44px; display:grid; place-items:center; border:1px solid var(--line); border-radius:999px; background:#fff8; backdrop-filter:blur(4px)
+  }
+  footer{
+    border-top:1px solid var(--line); background:var(--bg)
+  }
+  .footer-grid{display:grid; grid-template-columns:2fr repeat(4,1fr); gap:var(--gap); padding:40px 0}
+  .footer-col h6{margin:0 0 10px; font-size:14px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted)}
+  .footer-col a{display:block; padding:6px 0; color:var(--text)}
+  .currency{
+    margin-top:14px; display:flex; gap:8px; align-items:center
+  }
+  .currency select{
+    padding:10px 12px; border-radius:10px; border:1px solid var(--line); background:#fff
+  }
+  .copyright{
+    border-top:1px solid var(--line); padding:14px 0; font-size:14px; color:var(--muted); display:flex; justify-content:space-between; align-items:center
+  }
+  .footer-chat{
+    display:flex; align-items:center; gap:10px
+  }
+
+  @media (max-width: 980px){
+    .about, .spotlight, .benefits, .reviews-wrap, .sustain, .newsletter{grid-template-columns:1fr}
+    .tile{grid-column:span 12}
+    .benefit-list{grid-template-columns:repeat(2, 1fr)}
+    .footer-grid{grid-template-columns:1fr 1fr; gap:24px}
+    .nav-links{display:none}
+    .menu-toggle{display:inline-flex}
+  }
+  @media (max-width: 640px){
+    .benefit-list{grid-template-columns:1fr}
+    .footer-grid{grid-template-columns:1fr}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .btn, .carousel-track{transition:none}
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="container nav">
+    <a href="#" class="brand" aria-label="Karst Goods Home">
+      <span class="brand-mark">K</span>
+      <span>Karst Goods</span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#collections">Shop</a>
+      <a href="#about">About</a>
+      <a href="#sustainability">Sustainability</a>
+      <a href="#wholesale">Wholesale</a>
+      <a href="#co-brand">Co-Brand</a>
+    </nav>
+    <div class="nav-actions">
+      <a class="cart" href="/cart" aria-label="Cart">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#323232" stroke-width="1.8"><circle cx="9" cy="20" r="1.6"/><circle cx="18" cy="20" r="1.6"/><path d="M1.5 2.5h3l2.2 11.2a2 2 0 0 0 2 1.6h8.6a2 2 0 0 0 2-1.6L21.5 7H6"/></svg>
+      </a>
+      <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <nav>
+      <a href="#collections">Shop</a>
+      <a href="#about">About</a>
+      <a href="#sustainability">Sustainability</a>
+      <a href="#wholesale">Wholesale</a>
+      <a href="#co-brand">Co-Brand</a>
+      <a href="/cart">Cart</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="hero" aria-label="Hero">
+  <div class="hero-media" aria-hidden="true">
+    <video autoplay muted loop playsinline poster="/demos/assets/karstgoods_com_/Hero_Image.png"></video>
+  </div>
+  <div class="container hero-content">
+    <span class="tag">We started Karst in 2016, in Sydney with an original idea and a genuine purpose.</span>
+    <h1 class="headline">Better tools. Better work. Better tomorrow.</h1>
+    <p class="subtext">Premium stone paper tools designed for creativity and productivity—smoother to write on, water-resistant, and kinder to the planet.</p>
+    <div class="hero-ctas">
+      <a href="#collections" class="btn">Shop Now
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFBF2" stroke-width="2"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#about" class="btn outline">Our Story</a>
+    </div>
+    <div class="meta">
+      <span>Sydney-born • Since 2016</span>
+      <span class="dot"></span>
+      <span>Crafted for thinkers, makers, doers</span>
+    </div>
+  </div>
+</section>
+
+<section class="container" id="about">
+  <div class="about">
+    <div class="about-card">
+      <span class="tag">About the Brand</span>
+      <h3>Thoughtfully designed tools for a better way to work, create, and live.</h3>
+      <p>Karst began in Sydney in 2016 with a single idea—to reimagine paper. Today, we craft sustainable essentials from Karst Stone Paper™ that are smoother, stronger, and more durable than traditional pulp paper. We champion innovation, quality, and responsibility, so you can do your best work with a lighter footprint.</p>
+      <div class="link-row">
+        <a class="link-pill" href="https://karstgoods.com/pages/our-story">Our Story</a>
+        <a class="link-pill" href="https://karstgoods.com/pages/sustainability">Sustainability</a>
+        <a class="link-pill" href="#materials">Materials</a>
+      </div>
+    </div>
+    <div class="about-card">
+      <span class="tag">Featured Mission</span>
+      <h3>Sustainable by design, beautiful by nature.</h3>
+      <p>Our stone paper is made without trees, water, or bleaches, and produces lower carbon emissions. It’s tear-resistant, water-resistant, and endlessly inspiring—engineered to help ideas flow, anywhere.</p>
+      <a href="#benefits" class="btn" style="margin-top:8px">Why Karst Stone Paper™</a>
+    </div>
+  </div>
+</section>
+
+<section class="container" id="collections" aria-label="Featured Collections">
+  <div style="display:flex; align-items:baseline; justify-content:space-between; gap:16px; margin-bottom:16px">
+    <div>
+      <span class="tag">Shop</span>
+      <h3 style="margin:6px 0 0">Featured Collections & Categories</h3>
+    </div>
+    <a href="https://karstgoods.com/collections/all" class="btn outline">View All</a>
+  </div>
+  <div class="collections">
+    <a class="tile" href="https://karstgoods.com/collections/notebooks">
+      <div class="tile-media"></div>
+      <div class="tile-content">
+        <h4>Notebooks & Journals</h4>
+        <p class="subtext">Smoother pages. Effortless flow.</p>
+        <span class="btn" style="margin-top:12px">Shop
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFBF2" stroke-width="2"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+        </span>
+      </div>
+    </a>
+    <a class="tile" href="https://karstgoods.com/collections/planners">
+      <div class="tile-media"></div>
+      <div class="tile-content">
+        <h4>Planners & Productivity</h4>
+        <p class="subtext">Structure for progress, not pressure.</p>
+        <span class="btn" style="margin-top:12px">Shop
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFBF2" stroke-width="2"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+        </span>
+      </div>
+    </a>
+    <a class="tile" href="https://karstgoods.com/collections/art-supplies">
+      <div class="tile-media"></div>
+      <div class="tile-content">
+        <h4>Art Supplies</h4>
+        <p class="subtext">Tools that keep up with your ideas.</p>
+        <span class="btn" style="margin-top:12px">Shop
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFBF2" stroke-width="2"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+        </span>
+      </div>
+    </a>
+    <a class="tile" href="https://karstgoods.com/collections/puzzles">
+      <div class="tile-media"></div>
+      <div class="tile-content">
+        <h4>Puzzles</h4>
+        <p class="subtext">Mindful moments, tactile joy.</p>
+        <span class="btn" style="margin-top:12px">Shop
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFBF2" stroke-width="2"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+        </span>
+      </div>
+    </a>
+    <a class="tile large" href="https://karstgoods.com/collections/gifts">
+      <div class="tile-media"></div>
+      <div class="tile-content">
+        <h4>Gifts & Bundles</h4>
+        <p class="subtext">Thoughtful sets for those who make and do.</p>
+        <span class="btn" style="margin-top:12px">Shop Gifts
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFBF2" stroke-width="2"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+        </span>
+      </div>
+    </a>
+  </div>
+
+  <div class="spotlight" style="margin-top:40px" id="spotlight">
+    <div class="spotlight-media">
+      <img src="/demos/assets/karstgoods_com_/Product_Feature_Image.png" alt="Limited Edition Karst Stone Paper Puzzle product photo">
+    </div>
+    <div class="spotlight-info">
+      <span class="tag">Limited Edition • Best Seller</span>
+      <h3 style="margin:4px 0 6px">Stone Paper Puzzle “Coastal Strata” — 1000 pcs</h3>
+      <p>Inspired by Sydney’s coastline, this limited edition puzzle is printed on premium Karst Stone Paper™ for vibrant detail and a velvet-smooth feel. Water-resistant, durable, and satisfyingly precise.</p>
+      <div class="price">$59.00 USD</div>
+      <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:6px">
+        <a class="btn" href="https://karstgoods.com/collections/puzzles">Shop Puzzle</a>
+        <a class="btn outline" href="#reviews">Read Reviews</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="container" id="benefits" aria-label="Why Choose Karst Stone Paper">
+  <div class="benefits">
+    <div>
+      <span class="tag">Why Choose Karst Stone Paper™?</span>
+      <h3 style="margin:8px 0 12px">Smoother, stronger, more sustainable.</h3>
+      <p style="color:var(--muted); max-width:600px">Our paper is made from calcium carbonate bonded with a small amount of non-toxic resin—no trees, no water, no bleaches. The result: a durable, velvety surface that resists water and tearing, with intense print fidelity.</p>
+      <div class="benefit-list" style="margin-top:16px">
+        <div class="benefit">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#323232" stroke-width="1.8"><path d="M12 3v18"/><path d="M5 10l7-7 7 7"/></svg>
+          <h5>Sustainable</h5>
+          <p>No trees or water used, lower CO₂ footprint.</p>
+        </div>
+        <div class="benefit">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#323232" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 12l2 2 4-4"/></svg>
+          <h5>Durable</h5>
+          <p>Water-resistant, tear-resistant, built to last.</p>
+        </div>
+        <div class="benefit">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#323232" stroke-width="1.8"><path d="M4 7h16M4 12h16M4 17h10"/></svg>
+          <h5>Superior Feel</h5>
+          <p>Ultra-smooth pages for effortless writing.</p>
+        </div>
+      </div>
+      <a class="btn" href="https://karstgoods.com/pages/materials" style="margin-top:16px">Explore Materials</a>
+    </div>
+    <div class="illustration">
+      <img src="/demos/assets/karstgoods_com_/Illustrative_Section_for__Why_choose_Karst_Stone_Paper___.png" alt="Illustration of Karst Stone Paper benefits">
+    </div>
+  </div>
+</section>
+
+<section class="reviews" id="reviews" aria-label="Customer Reviews">
+  <div class="container reviews-wrap">
+    <div class="reviews-visual" aria-hidden="true">
+      <img src="/demos/assets/karstgoods_com_/Customer_Review_Section_Visual.png" alt="Happy customers using Karst products">
+    </div>
+    <div>
+      <span class="tag">Customer Reviews</span>
+      <h3 style="margin:8px 0 14px">Loved by creators, students, and teams worldwide.</h3>
+      <div class="carousel" id="reviewCarousel">
+        <div class="carousel-track">
+          <div class="review">
+            <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <p>Hands down the smoothest notebook I’ve ever used. The pages feel premium and my pen just glides. Plus, rain spills don’t ruin my notes anymore!</p>
+            <cite>— Maya, Designer</cite>
+          </div>
+          <div class="review">
+            <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <p>Switched our entire team to Karst planners this quarter. Better focus, fewer distractions. The build quality is exceptional.</p>
+            <cite>— James, Product Manager</cite>
+          </div>
+          <div class="review">
+            <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <p>The puzzle quality surprised me—rich colors and a velvety finish. A calming weekend ritual I actually look forward to.</p>
+            <cite>— Priya, Architect</cite>
+          </div>
+        </div>
+        <div class="carousel-nav">
+          <button class="carousel-btn" data-dir="-1" aria-label="Previous review">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#323232" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+          </button>
+          <button class="carousel-btn" data-dir="1" aria-label="Next review">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#323232" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="container" id="sustainability">
+  <div class="sustain">
+    <div>
+      <span class="tag">Sustainability Commitment</span>
+      <h3 style="margin:8px 0 12px">Certified responsible. Measurably better.</h3>
+      <p style="color:var(--muted)">We’re committed to continuous improvement—from materials and manufacturing to packaging and shipping. We’re proud to be a certified B Corporation, carbon neutral, and a partner of One Tree Planted.</p>
+      <div class="badges">
+        <div class="badge">
+          <div style="font-weight:800">B Corp Certified</div>
+          <div style="font-size:13px; color:var(--muted); margin-top:4px">Measured social & environmental performance</div>
+        </div>
+        <div class="badge">
+          <div style="font-weight:800">One Tree Planted</div>
+          <div style="font-size:13px; color:var(--muted); margin-top:4px">Reforestation partnership</div>
+        </div>
+        <div class="badge">
+          <div style="font-weight:800">Carbon Neutral</div>
+          <div style="font-size:13px; color:var(--muted); margin-top:4px">Offset and reduction initiatives</div>
+        </div>
+      </div>
+      <a class="btn" style="margin-top:16px" href="https://karstgoods.com/pages/sustainability">See our initiatives</a>
+    </div>
+    <div class="illustration">
+      <img src="/demos/assets/karstgoods_com_/Background_Image.png" alt="Natural stone textures background">
+    </div>
+  </div>
+</section>
+
+<section class="container" id="newsletter">
+  <div class="newsletter">
+    <div>
+      <span class="tag">Join the community</span>
+      <h3 style="margin:8px 0 12px">Get 10% off your first order</h3>
+      <p style="color:var(--muted)">Sign up to receive product updates, launches, and stories from the Karst community. Unsubscribe anytime.</p>
+      <div class="signup">
+        <form class="form" action="#" method="post" onsubmit="event.preventDefault(); this.reset(); alert('Thanks for subscribing!');">
+          <input type="email" name="email" placeholder="Enter your email" aria-label="Email address" required>
+          <button class="btn" type="submit">Subscribe</button>
+        </form>
+        <div class="social" aria-label="Social media">
+          <a href="https://www.facebook.com/" aria-label="Facebook">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#323232" stroke-width="1.8"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/" aria-label="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#323232" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="3.2"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+          </a>
+          <a href="https://www.tiktok.com/" aria-label="TikTok">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#323232" stroke-width="1.8"><path d="M15 3v3.5a5.5 5.5 0 1 1-4 9.5"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/" aria-label="LinkedIn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#323232" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 11v7M8 8v0M12 18v-7a3 3 0 0 1 6 0v7"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div>
+      <img src="/demos/assets/karstgoods_com_/Hero_Image.png" alt="Karst products styled on soft stone surface" style="border:1px solid var(--line); border-radius:var(--radius-lg); box-shadow:var(--shadow)">
+    </div>
+  </div>
+</section>
+
+<section class="container" id="materials" style="padding-top:0">
+  <div class="about-card" style="display:flex; flex-wrap:wrap; gap:16px; align-items:center">
+    <img src="/demos/assets/karstgoods_com_/Illustrative_Section_for__Why_choose_Karst_Stone_Paper___.png" alt="Karst Stone Paper materials" style="width:110px; height:110px; object-fit:cover; border-radius:12px; border:1px solid var(--line)">
+    <div style="flex:1 1 260px">
+      <h4 style="margin:0 0 6px">Materials that make a difference</h4>
+      <p style="margin:0; color:var(--muted)">Learn how stone paper is made, what sets it apart, and why it helps reduce environmental impact without compromising on quality.</p>
+    </div>
+    <a class="btn outline" href="https://karstgoods.com/pages/materials">Learn More</a>
+  </div>
+</section>
+
+<section class="container" id="wholesale" style="padding-top:0">
+  <div class="about-card">
+    <span class="tag">Wholesale & Co-Brand</span>
+    <h3 style="margin:8px 0 12px">Bring Karst to your community or brand.</h3>
+    <p style="color:var(--muted); max-width:800px">We partner with retailers and organizations worldwide. Explore wholesale opportunities or collaborate on custom co-branded products crafted from Karst Stone Paper™.</p>
+    <div class="link-row">
+      <a class="btn" href="https://karstgoods.com/pages/wholesale">Wholesale</a>
+      <a class="btn outline" id="co-brand" href="https://karstgoods.com/pages/cobrand">Co-Brand</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container footer-grid">
+    <div>
+      <div class="brand" style="margin-bottom:10px">
+        <span class="brand-mark">K</span><strong>Karst Goods</strong>
+      </div>
+      <p style="color:var(--muted); max-width:420px">Sydney-born since 2016. Better tools for creativity and productivity, made responsibly from Karst Stone Paper™.</p>
+      <div class="currency">
+        <span class="tag">Currency</span>
+        <select aria-label="Select currency">
+          <option selected>USD $</option>
+          <option>EUR €</option>
+          <option>GBP £</option>
+          <option>AUD $</option>
+          <option>CAD $</option>
+        </select>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h6>Shop</h6>
+      <a href="#collections">All Products</a>
+      <a href="https://karstgoods.com/collections/notebooks">Notebooks</a>
+      <a href="https://karstgoods.com/collections/planners">Planners</a>
+      <a href="https://karstgoods.com/collections/puzzles">Puzzles</a>
+      <a href="https://karstgoods.com/collections/gifts">Gifts & Bundles</a>
+    </div>
+    <div class="footer-col">
+      <h6>About</h6>
+      <a href="https://karstgoods.com/pages/our-story">Our Story</a>
+      <a href="#benefits">Why Stone Paper</a>
+      <a href="https://karstgoods.com/pages/materials">Materials</a>
+      <a href="#reviews">Reviews</a>
+    </div>
+    <div class="footer-col">
+      <h6>Support</h6>
+      <a href="https://karstgoods.com/pages/faq">FAQs</a>
+      <a href="https://karstgoods.com/pages/contact">Contact</a>
+      <a href="https://karstgoods.com/policies/shipping-policy">Shipping</a>
+      <a href="https://karstgoods.com/policies/refund-policy">Returns</a>
+    </div>
+    <div class="footer-col">
+      <h6>Partners</h6>
+      <a href="https://karstgoods.com/pages/wholesale">Wholesale</a>
+      <a href="https://karstgoods.com/pages/cobrand">Co-Brand</a>
+      <a href="https://karstgoods.com/pages/corporate-gifting">Corporate Gifting</a>
+    </div>
+  </div>
+  <div class="container copyright">
+    <div>© <span id="year"></span> Karst Goods. All rights reserved.</div>
+    <div class="footer-chat">
+      <span class="tag">Need help?</span>
+      <span>Chat with us in the corner.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const menuToggle = document.querySelector('.menu-toggle');
+  const mobileMenu = document.getElementById('mobileMenu');
+  menuToggle.addEventListener('click', () => {
+    const open = mobileMenu.classList.toggle('open');
+    menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click', e=>{
+      const id = a.getAttribute('href');
+      if(id.length>1){
+        const el = document.querySelector(id);
+        if(el){
+          e.preventDefault();
+          const y = el.getBoundingClientRect().top + window.pageYOffset - 72;
+          window.scrollTo({top:y, behavior:'smooth'});
+          if(mobileMenu.classList.contains('open')){
+            mobileMenu.classList.remove('open');
+            menuToggle.setAttribute('aria-expanded','false');
+          }
+        }
+      }
+    })
+  });
+
+  const yearEl = document.getElementById('year');
+  if(yearEl) yearEl.textContent = new Date().getFullYear();
+
+  const carousel = document.getElementById('reviewCarousel');
+  const track = carousel.querySelector('.carousel-track');
+  const slides = Array.from(track.children);
+  let index = 0;
+  function go(dir){
+    index = (index + dir + slides.length) % slides.length;
+    track.style.transform = `translateX(-${index*100}%)`;
+  }
+  carousel.querySelectorAll('.carousel-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=>go(parseInt(btn.dataset.dir,10)));
+  });
+  let timer = setInterval(()=>go(1), 5500);
+  carousel.addEventListener('mouseenter', ()=>clearInterval(timer));
+  carousel.addEventListener('mouseleave', ()=>timer = setInterval(()=>go(1), 5500));
+
+  document.querySelectorAll('.btn').forEach(btn=>{
+    btn.addEventListener('mouseenter', ()=>btn.style.boxShadow='0 12px 28px rgba(50,50,50,.2)');
+    btn.addEventListener('mouseleave', ()=>btn.style.boxShadow='0 8px 20px rgba(50,50,50,.15)');
+  });
+</script>
+
+<script>
+  window.chatbotConfig = {
+    apiUrl: "https://makeitsimpl.app.n8n.cloud/webhook/chat",
+    websiteUrl: "https://karstgoods.com/",
+    headers: {
+      "Authorization": "Basic Y2hhdGJvdDppbG92ZWNoYXRib3RzITEyMzQ="
+    }
+  };
+</script>
+<script src="https://makeitsimpl.ai/chatbot-widget.js"></script>
+</body>
+</html>
