@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Mixtons — classic cocktails with a twist</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Mixtons: classic cocktails with a twist. A new wave of bold, bar-grade classics reimagined for adventurous palates.">
+  <style>
+    :root{
+      --bg:#ffffff;
+      --text:#0F1214;
+      --muted:#6A6F75;
+      --accent:#00C2A8;
+      --accent-2:#FF6A3D;
+      --dark:#0E0F12;
+      --card:#F7F8FA;
+      --border:rgba(14,15,18,0.08);
+      --radius:14px;
+      --shadow:0 10px 30px rgba(0,0,0,.08);
+      --shadow-strong:0 20px 60px rgba(0,0,0,.18);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter, ui-sans-serif, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol", sans-serif; line-height:1.5;}
+    img{max-width:100%;display:block}
+    a{color:inherit;text-decoration:none}
+    .container{width:100%;max-width:1200px;margin:0 auto;padding:0 20px}
+
+    /* Background texture */
+    body:before{
+      content:"";
+      position:fixed;inset:0;
+      background:
+        radial-gradient(1200px 600px at 85% -10%, rgba(0,194,168,.12), transparent 50%),
+        radial-gradient(800px 500px at -10% 20%, rgba(255,106,61,.10), transparent 50%),
+        url('/demos/assets/mixtons_com_/image_1.png');
+      background-size:cover, cover, cover;
+      background-position:center;
+      opacity:.32;
+      pointer-events:none;
+      z-index:-2;
+      filter:saturate(1.1) contrast(1.05);
+    }
+    body:after{
+      content:"";
+      position:fixed;inset:0;
+      background:linear-gradient(180deg, rgba(255,255,255,.85) 0%, rgba(255,255,255,.95) 22%, rgba(255,255,255,.98) 55%, #fff 100%);
+      z-index:-1;
+    }
+
+    /* Header */
+    header{
+      position:sticky;top:0;z-index:50;
+      background:rgba(255,255,255,.7);
+      backdrop-filter:saturate(1.4) blur(10px);
+      border-bottom:1px solid var(--border);
+    }
+    .nav{
+      display:flex;align-items:center;justify-content:space-between;
+      height:72px;
+    }
+    .brand{
+      display:flex;align-items:center;gap:12px;font-weight:700;letter-spacing:.3px;
+    }
+    .brand-mark{
+      width:36px;height:36px;border-radius:50%;
+      background:conic-gradient(from 180deg, var(--accent), var(--accent-2), var(--accent));
+      box-shadow:0 6px 18px rgba(0,0,0,.15), 0 0 0 3px rgba(0,194,168,.12);
+    }
+    .brand .title{
+      font-size:18px
+    }
+    nav ul{display:flex;gap:28px;align-items:center;margin:0;padding:0;list-style:none}
+    nav a{color:var(--text);font-weight:500;opacity:.9;position:relative;transition:opacity .2s ease}
+    nav a:after{
+      content:"";position:absolute;left:0;bottom:-8px;height:2px;width:0;background:linear-gradient(90deg,var(--accent),var(--accent-2));
+      transition:width .25s ease;
+    }
+    nav a:hover{opacity:1}
+    nav a:hover:after{width:100%}
+    .cta-small{padding:10px 16px;border-radius:999px;border:1px solid var(--border);font-weight:600}
+    .menu-toggle{
+      display:none;flex-direction:column;gap:5px;background:transparent;border:none;padding:8px;border-radius:10px
+    }
+    .menu-toggle span{
+      display:block;width:22px;height:2px;background:var(--text);border-radius:2px
+    }
+
+    /* Mobile nav */
+    @media (max-width: 900px){
+      nav{position:fixed;inset:72px 0 auto 0;background:rgba(255,255,255,.98);backdrop-filter:blur(8px);transform:translateY(-8px);opacity:0;pointer-events:none;transition:all .25s ease;border-bottom:1px solid var(--border)}
+      nav.open{transform:translateY(0);opacity:1;pointer-events:auto}
+      nav ul{flex-direction:column;gap:18px;padding:18px 20px}
+      .menu-toggle{display:flex}
+      .hide-mobile{display:none}
+    }
+
+    /* Hero */
+    .hero{
+      display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center;padding:80px 0 50px;
+    }
+    .badge{
+      display:inline-flex;align-items:center;gap:10px;border:1px solid var(--border);border-radius:999px;padding:8px 14px;background:rgba(255,255,255,.8);
+      font-size:12px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:#2b2f33
+    }
+    .badge .dot{width:8px;height:8px;border-radius:50%;background:linear-gradient(90deg,var(--accent),var(--accent-2));box-shadow:0 0 0 4px rgba(0,194,168,.12)}
+    .headline{
+      font-size:clamp(36px, 6vw, 66px);line-height:1.05;margin:16px 0 14px;font-weight:800;letter-spacing:-.02em
+    }
+    .sub{
+      font-size:clamp(16px, 2.2vw, 20px);opacity:.85;margin-bottom:22px
+    }
+    .tagline{
+      margin:22px 0 28px;padding:18px 20px;border-left:4px solid var(--accent);background:linear-gradient(0deg, rgba(0,0,0,.02), rgba(0,0,0,.02));
+      border-radius:10px;font-size:16px;color:#2b2f33
+    }
+    .btn-row{display:flex;gap:14px;flex-wrap:wrap}
+    .btn{
+      position:relative;display:inline-flex;align-items:center;gap:10px;
+      padding:14px 20px;border-radius:14px;font-weight:700;letter-spacing:.2px;border:1px solid var(--border);
+      color:#0c0f10;background:#fff;box-shadow:var(--shadow);transition:transform .2s ease, box-shadow .2s ease, background .2s ease;
+      will-change:transform
+    }
+    .btn.primary{
+      color:#fff;border:none;background:linear-gradient(135deg, var(--accent), #00A58F);
+      box-shadow:0 10px 24px rgba(0,194,168,.35)
+    }
+    .btn .ring{
+      position:absolute;inset:-2px;border-radius:inherit;border:2px solid transparent;
+    }
+    .btn.hovering .ring{border-color:rgba(0,194,168,.35)}
+    .btn:hover{transform:translateY(-2px);box-shadow:var(--shadow-strong)}
+    .btn svg{width:18px;height:18px}
+
+    .hero-media{
+      position:relative;border-radius:22px;overflow:hidden;background:#0b0d10;box-shadow:var(--shadow-strong)
+    }
+    .hero-media:after{
+      content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,.1), rgba(0,0,0,.35));
+      pointer-events:none
+    }
+    .hero-media img{width:100%;height:100%;object-fit:cover}
+
+    @media (max-width: 960px){
+      .hero{grid-template-columns:1fr;gap:22px;padding:56px 0 20px}
+      .hero-media{height:54vw;min-height:340px}
+    }
+
+    /* Features / About */
+    .about{
+      padding:52px 0 12px
+    }
+    .about-grid{
+      display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:20px
+    }
+    .feature{
+      background:linear-gradient(180deg, #fff, #FBFBFD);
+      border:1px solid var(--border);border-radius:18px;padding:22px;box-shadow:var(--shadow)
+    }
+    .feature h3{margin:0 0 8px;font-size:18px}
+    .feature p{margin:0;color:var(--muted);font-size:15px}
+    @media (max-width: 900px){.about-grid{grid-template-columns:1fr;gap:14px}}
+
+    /* Story section */
+    .story{
+      margin:70px 0;border-radius:22px;overflow:hidden;background:var(--dark);color:#e9ecf0;
+      display:grid;grid-template-columns:1.1fr .9fr;box-shadow:var(--shadow-strong)
+    }
+    .story-media{min-height:380px}
+    .story-media img{width:100%;height:100%;object-fit:cover}
+    .story-content{padding:36px 30px 32px}
+    .story .eyebrow{color:#9aa3ad;letter-spacing:.24em;text-transform:uppercase;font-weight:700;font-size:12px}
+    .story h2{font-size:clamp(26px, 3.5vw, 38px);margin:10px 0 10px}
+    .story p{color:#b9c1c7;margin:0 0 18px}
+    .story .btn{background:#121419;color:#e9ecf0;border-color:#20242c}
+    .story .btn.primary{background:linear-gradient(135deg, var(--accent-2), #ff7a55); box-shadow:0 10px 24px rgba(255,106,61,.35)}
+    @media (max-width: 960px){.story{grid-template-columns:1fr}.story-media{min-height:260px}}
+
+    /* Product Slider */
+    .collection{padding:50px 0}
+    .section-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:12px}
+    .section-head h2{margin:0;font-size:28px}
+    .section-head p{margin:6px 0 0;color:var(--muted)}
+    .slider-wrap{position:relative;margin-top:16px}
+    .slider{
+      display:grid;grid-auto-flow:column;grid-auto-columns:calc(33.333% - 14px);
+      gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding:10px 4px 18px;scrollbar-width:none
+    }
+    .slider::-webkit-scrollbar{display:none}
+    .slide{
+      position:relative;scroll-snap-align:start;border-radius:18px;overflow:hidden;border:1px solid var(--border);background:#0c0f12;color:#e8ecf1;
+      box-shadow:var(--shadow)
+    }
+    .slide img{width:100%;height:260px;object-fit:cover;display:block}
+    .slide .meta{padding:16px 16px 18px;background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.0))}
+    .tag{display:inline-flex;padding:6px 10px;border-radius:999px;background:rgba(0,194,168,.12);color:#0de1c3;font-size:12px;font-weight:700;letter-spacing:.04em}
+    .slide h3{margin:10px 0 6px;font-size:18px;color:#fff}
+    .slide p{margin:0;color:#aeb7bf;font-size:14px}
+    .slider-ctrl{
+      position:absolute;top:-52px;right:0;display:flex;gap:8px
+    }
+    .icon-btn{
+      width:40px;height:40px;border-radius:12px;border:1px solid var(--border);background:#fff;box-shadow:var(--shadow);
+      display:inline-flex;align-items:center;justify-content:center;cursor:pointer;transition:transform .15s ease, box-shadow .2s ease
+    }
+    .icon-btn:hover{transform:translateY(-2px);box-shadow:var(--shadow-strong)}
+    @media (max-width:1200px){.slider{grid-auto-columns:calc(50% - 10px)}}
+    @media (max-width:720px){.slider{grid-auto-columns:85%}}
+
+    /* Partners marquee */
+    .partners{padding:60px 0 40px}
+    .marquee{
+      overflow:hidden;border:1px solid var(--border);border-radius:18px;background:linear-gradient(180deg,#fff,#FAFAFC);box-shadow:var(--shadow)
+    }
+    .marquee-track{
+      display:flex;gap:40px;align-items:center;padding:18px 0;
+      animation:scroll 26s linear infinite
+    }
+    .marquee .pill{
+      display:inline-flex;align-items:center;gap:10px;padding:10px 16px;border-radius:999px;background:#fff;border:1px dashed rgba(0,0,0,.08);margin-left:20px;white-space:nowrap
+    }
+    .marquee img{height:32px;width:auto;filter:grayscale(1) contrast(.9) brightness(.8)}
+    @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+    /* Footer */
+    footer{
+      margin-top:40px;background:#0e0f11;color:#cdd3d8;padding:40px 0 30px;border-top:1px solid rgba(255,255,255,.06)
+    }
+    .footer-grid{
+      display:grid;grid-template-columns:1.2fr .8fr .8fr;gap:20px
+    }
+    .footer-grid h4{margin:0 0 10px;font-size:16px;color:#e8edf1}
+    .footer-grid a{display:block;color:#cdd3d8;opacity:.85;margin:8px 0}
+    .newsletter{
+      background:#121418;border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:16px
+    }
+    .newsletter form{display:flex;gap:10px;margin-top:10px}
+    .newsletter input{
+      flex:1;padding:12px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.08);
+      background:#0f1114;color:#e9edf1
+    }
+    .newsletter button{white-space:nowrap}
+    .foot-bottom{display:flex;align-items:center;justify-content:space-between;margin-top:26px;padding-top:16px;border-top:1px solid rgba(255,255,255,.06);font-size:14px;color:#aeb6bb}
+    .social{display:flex;gap:10px}
+    .social a{width:36px;height:36px;border-radius:10px;background:#121418;border:1px solid rgba(255,255,255,.06);display:inline-flex;align-items:center;justify-content:center}
+    @media (max-width:900px){
+      .footer-grid{grid-template-columns:1fr;gap:16px}
+      .foot-bottom{flex-direction:column;gap:12px}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a href="#" class="brand">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="title">Mixtons</span>
+        <span class="hide-mobile" style="opacity:.55;margin-left:8px;font-weight:600">classic cocktails with a twist</span>
+      </a>
+      <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="#explore">Explore</a></li>
+          <li><a href="#story">Story</a></li>
+          <li><a href="#collection">Collection</a></li>
+          <li><a href="#stockists">Stockists</a></li>
+          <li><a href="#contact" class="cta-small">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero container" id="explore">
+      <div>
+        <span class="badge"><span class="dot"></span> New wave of classics</span>
+        <h1 class="headline">Mixtons: classic cocktails with a twist.</h1>
+        <p class="sub">Bar-grade builds meet creative rebellion—crafted for palates that prefer detours over dead ends.</p>
+        <div class="tagline">
+          Forget fusty rules and archaic recipes, we exist for those who believe the best things in life happen when you step away from the ordinary.
+        </div>
+        <div class="btn-row">
+          <a href="#collection" class="btn primary" data-cta="primary">
+            <span class="ring"></span>
+            Shop the Collection
+            <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </a>
+          <a href="#story" class="btn" data-cta="secondary">
+            <span class="ring"></span>
+            Our Story
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="hero-media" aria-hidden="true">
+        <img src="/demos/assets/mixtons_com_/image_0.png" alt="Mixtons hero composition">
+      </div>
+    </section>
+
+    <section class="about container" aria-label="About Mixtons">
+      <div class="feature" style="grid-column:1/-1;margin-bottom:14px;display:flex;align-items:center;gap:16px">
+        <div class="brand-mark" style="width:28px;height:28px"></div>
+        <div>
+          <strong>Craft, clarity, character.</strong> We remix time-honored builds with modern technique and adventurous flavors—no stuffy rules, just precise pours that hit different.
+        </div>
+      </div>
+      <div class="about-grid">
+        <div class="feature">
+          <h3>Rule‑breaker DNA</h3>
+          <p>We honor the blueprint, then redraw it—layered bitters, unexpected infusions, and finishes that refuse to fade.</p>
+        </div>
+        <div class="feature">
+          <h3>Bar‑grade balance</h3>
+          <p>Every bottle targets perfect acid, sugar, and spirit ratios so your first sip is as dialed as the last.</p>
+        </div>
+        <div class="feature">
+          <h3>Designed to be discovered</h3>
+          <p>Minimalist bottles. Maximum flavor. Built to shine solo or elevate your home bar ritual.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="story container" id="story">
+      <div class="story-media">
+        <img src="/demos/assets/mixtons_com_/image_2.png" alt="The Plot Twist: Mixtons story illustration">
+      </div>
+      <div class="story-content">
+        <div class="eyebrow">The Plot Twist</div>
+        <h2>Where classic meets “didn’t see that coming.”</h2>
+        <p>We started Mixtons to celebrate the moment a familiar sip turns into something electric. Think Italian aperitivo notes dancing with tropical high notes; think oak meeting citrus in a clean, modern frame.</p>
+        <p>It’s not rebellion for its own sake—it’s respect for craft with the courage to experiment. Welcome to your new favorite detour.</p>
+        <div class="btn-row">
+          <a href="#collection" class="btn primary"><span class="ring"></span> Taste the twist</a>
+          <a href="#contact" class="btn"><span class="ring"></span> Talk to us</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="collection container" id="collection">
+      <div class="section-head">
+        <div>
+          <h2>Featured reimaginations</h2>
+          <p>Classic builds, modern edge. Scroll and pick your pour.</p>
+        </div>
+        <div class="slider-ctrl">
+          <button class="icon-btn" aria-label="Previous" data-prev>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M15 5l-7 7 7 7" stroke="#0F1214" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+          <button class="icon-btn" aria-label="Next" data-next>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M9 19l7-7-7-7" stroke="#0F1214" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="slider" data-slider>
+        <article class="slide">
+          <img src="/demos/assets/mixtons_com_/image_3.png" alt="Negroni Nova">
+          <div class="meta">
+            <span class="tag">Bitter • Bright</span>
+            <h3>Negroni Nova</h3>
+            <p>Campari character, dialed with citrus oils and a shimmering botanical finish.</p>
+          </div>
+        </article>
+        <article class="slide">
+          <img src="/demos/assets/mixtons_com_/image_3.png" alt="Margarita Flux">
+          <div class="meta">
+            <span class="tag" style="background:rgba(255,106,61,.14);color:#ff855f">Zesty • Electric</span>
+            <h3>Margarita Flux</h3>
+            <p>Agave-rich backbone with salted yuzu lift and crystalline lime acidity.</p>
+          </div>
+        </article>
+        <article class="slide">
+          <img src="/demos/assets/mixtons_com_/image_3.png" alt="Old Fashioned Rewired">
+          <div class="meta">
+            <span class="tag">Oak • Silken</span>
+            <h3>Old Fashioned Rewired</h3>
+            <p>Barrel warmth, cacao bitters, and a whisper of orange smoke.</p>
+          </div>
+        </article>
+        <article class="slide">
+          <img src="/demos/assets/mixtons_com_/image_3.png" alt="Martini Mirage">
+          <div class="meta">
+            <span class="tag" style="background:rgba(0,194,168,.12);color:#0de1c3">Crisp • Luminous</span>
+            <h3>Martini Mirage</h3>
+            <p>Herbal chill with saline precision—clarity you can taste.</p>
+          </div>
+        </article>
+      </div>
+      <div style="text-align:center;margin-top:8px">
+        <a href="#contact" class="btn"><span class="ring"></span> Request full menu</a>
+      </div>
+    </section>
+
+    <section class="partners container" id="stockists" aria-label="Partners and stockists">
+      <div class="section-head" style="margin-bottom:6px">
+        <div>
+          <h2>Friends & stockists</h2>
+          <p>Find Mixtons at forward-thinking bars, bottle shops, and concept stores.</p>
+        </div>
+      </div>
+      <div class="marquee">
+        <div class="marquee-track" aria-hidden="true">
+          <span class="pill"><img src="/demos/assets/mixtons_com_/image_4.png" alt="Partner logo 1"> Nightcap Society</span>
+          <span class="pill"><img src="/demos/assets/mixtons_com_/image_4.png" alt="Partner logo 2"> The Aperitivo Club</span>
+          <span class="pill"><img src="/demos/assets/mixtons_com_/image_4.png" alt="Partner logo 3"> Bitter & Bright</span>
+          <span class="pill"><img src="/demos/assets/mixtons_com_/image_4.png" alt="Partner logo 4"> Oaks & Citrus</span>
+          <span class="pill"><img src="/demos/assets/mixtons_com_/image_4.png" alt="Partner logo 5"> Flux Market</span>
+
+          <span class="pill"><img src="/demos/assets/mixtons_com_/image_4.png" alt=""> Nightcap Society</span>
+          <span class="pill"><img src="/demos/assets/mixtons_com_/image_4.png" alt=""> The Aperitivo Club</span>
+          <span class="pill"><img src="/demos/assets/mixtons_com_/image_4.png" alt=""> Bitter & Bright</span>
+          <span class="pill"><img src="/demos/assets/mixtons_com_/image_4.png" alt=""> Oaks & Citrus</span>
+          <span class="pill"><img src="/demos/assets/mixtons_com_/image_4.png" alt=""> Flux Market</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="brand" style="margin-bottom:10px">
+            <span class="brand-mark"></span>
+            <span class="title" style="color:#e8edf1">Mixtons</span>
+          </div>
+          <p style="margin:0 0 12px;color:#aeb6bb">Classic cocktails, reimagined with a modern pulse. Crafted for the curious.</p>
+          <div class="social" aria-label="Social links">
+            <a href="#" aria-label="Instagram">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="#cdd3d8"/><circle cx="12" cy="12" r="3.5" stroke="#cdd3d8"/><circle cx="17.5" cy="6.5" r="1" fill="#cdd3d8"/></svg>
+            </a>
+            <a href="#" aria-label="Twitter">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M21 5.9c-.7.3-1.4.5-2.1.6.8-.5 1.3-1.2 1.6-2.1-.8.5-1.7.9-2.6 1.1A3.6 3.6 0 0 0 12 8a10.2 10.2 0 0 1-7.5-3.8 3.6 3.6 0 0 0 1.1 4.8c-.6 0-1.2-.2-1.7-.5v.1c0 1.8 1.3 3.3 3 3.6-.3.1-.7.1-1 .1-.2 0-.5 0-.7-.1.5 1.5 1.9 2.6 3.6 2.6A7.2 7.2 0 0 1 3 18.5 10.2 10.2 0 0 0 8.6 20c6.8 0 10.6-5.7 10.6-10.6v-.5c.7-.5 1.3-1.1 1.8-1.8z" fill="#cdd3d8"/></svg>
+            </a>
+            <a href="#" aria-label="TikTok">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M17 7.2c1.1.8 2.4 1.2 3.8 1.2V11c-1.8 0-3.4-.6-4.7-1.5v5.7a5.7 5.7 0 1 1-5.7-5.7c.3 0 .6 0 .9.1v3a2.7 2.7 0 1 0 2.7 2.7V3h3v4.2z" fill="#cdd3d8"/></svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <h4>Explore</h4>
+          <a href="#explore">Home</a>
+          <a href="#story">Our Story</a>
+          <a href="#collection">Collection</a>
+          <a href="#stockists">Stockists</a>
+        </div>
+        <div class="newsletter">
+          <h4>Get the latest drops</h4>
+          <p style="margin:6px 0 0;color:#aeb6bb">Early access to limited releases and event invites.</p>
+          <form action="#" onsubmit="event.preventDefault(); alert('Thanks for subscribing!');">
+            <input type="email" placeholder="you@glass.com" aria-label="Email address" required>
+            <button class="btn primary" type="submit"><span class="ring"></span> Subscribe</button>
+          </form>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <div>© <span id="year"></span> Mixtons. All rights reserved.</div>
+        <div><a href="#" style="color:#cdd3d8;opacity:.85">Privacy</a> • <a href="#" style="color:#cdd3d8;opacity:.85">Terms</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Smooth scrolling
+    const smoothLinks = document.querySelectorAll('a[href^="#"]');
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    smoothLinks.forEach(link=>{
+      link.addEventListener('click', e=>{
+        const id = link.getAttribute('href');
+        if(id.length > 1){
+          const target = document.querySelector(id);
+          if(target){
+            e.preventDefault();
+            const y = target.getBoundingClientRect().top + window.pageYOffset - 72; // offset for header
+            if(prefersReduced){ window.scrollTo(0, y); }
+            else { window.scrollTo({top:y, behavior:'smooth'}); }
+            // Close mobile nav if open
+            closeMobileNav();
+          }
+        }
+      });
+    });
+
+    // Mobile menu toggle
+    const toggler = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('header nav');
+    function closeMobileNav(){
+      if(window.getComputedStyle(toggler).display!=='none'){
+        nav.classList.remove('open');
+        toggler.setAttribute('aria-expanded','false');
+      }
+    }
+    toggler.addEventListener('click', ()=>{
+      const open = nav.classList.toggle('open');
+      toggler.setAttribute('aria-expanded', String(open));
+    });
+    window.addEventListener('resize', ()=>{ if(window.innerWidth>900) closeMobileNav(); });
+
+    // Button hover effect (adds a subtle ring)
+    const buttons = document.querySelectorAll('.btn');
+    buttons.forEach(btn=>{
+      btn.addEventListener('mouseenter', ()=>btn.classList.add('hovering'));
+      btn.addEventListener('mouseleave', ()=>btn.classList.remove('hovering'));
+    });
+
+    // Simple slider controls
+    const slider = document.querySelector('[data-slider]');
+    const prev = document.querySelector('[data-prev]');
+    const next = document.querySelector('[data-next]');
+    function scrollByCard(dir){
+      if(!slider) return;
+      const card = slider.querySelector('.slide');
+      if(!card) return;
+      const gap = parseInt(getComputedStyle(slider).gap) || 0;
+      const amount = card.getBoundingClientRect().width + gap;
+      slider.scrollBy({left: dir*amount, behavior: prefersReduced ? 'auto' : 'smooth'});
+    }
+    prev.addEventListener('click', ()=>scrollByCard(-1));
+    next.addEventListener('click', ()=>scrollByCard(1));
+  </script>
+
+  <script>
+  window.chatbotConfig = {
+    apiUrl: "https://makeitsimpl.app.n8n.cloud/webhook/chat",
+    websiteUrl: "https://mixtons.com/",
+    headers: {
+      "Authorization": "Basic Y2hhdGJvdDppbG92ZWNoYXRib3RzITEyMzQ="
+    }
+  };
+  </script>
+  <script src="https://makeitsimpl.ai/chatbot-widget.js"></script>
+</body>
+</html>
