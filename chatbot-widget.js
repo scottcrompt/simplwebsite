@@ -56,6 +56,7 @@
   bottom: 90px;
   width: 360px;
   max-width: calc(100vw - 40px);
+  padding: 0 !important;
 
   /* FIX 👇 */
   height: 500px;     /* fixed, more compact height */
