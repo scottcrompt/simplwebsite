@@ -204,6 +204,17 @@
       background: var(--cb-white);
       border: 1px dashed var(--cb-black);
     }
+      /* top corners: make the black header reach into the rounded corners */
+.cb-header {
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+/* bottom corners: make the input bar reach into the rounded corners */
+.cb-input {
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
 
     @media (max-width: 480px) {
   .cb-window {
