@@ -50,16 +50,16 @@
       fill: var(--cb-white);
     }
 
-    .cb-window {
+.cb-window {
   position: fixed;
   right: 20px;
   bottom: 90px;
   width: 360px;
   max-width: calc(100vw - 40px);
 
-  /* change this 👇 */
-  height: calc(100vh - 120px); /* fills screen except for some margin */
-  top: 60px;                   /* pushes it down a bit from the very top */
+  /* FIX 👇 */
+  height: 500px;     /* fixed, more compact height */
+  top: auto;         /* remove the top offset so it anchors from the bottom */
 
   background: var(--cb-white);
   border: 1px solid var(--cb-gray-2);
@@ -74,6 +74,7 @@
   transform: translateY(6px);
   transition: opacity .2s ease, transform .2s ease;
 }
+
     .cb-window.cb-open {
       display: flex;
       opacity: 1;
