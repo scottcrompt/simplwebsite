@@ -88,7 +88,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 14px 0 16px;
+      padding: 0 0px 0 0px;
     }
     .cb-title {
       font-size: 14px;
