@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Planthood: Chef-Prepared Vegan Meal Kits Delivered Nationwide</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Restaurant-quality plant-based meals, prepared by chefs and ready in 15 minutes. Healthy, seasonal, sustainable, with free UK-wide delivery. Flexible subscriptions.">
+  <style>
+    :root{
+      --bg:#ffffff;
+      --text:#191c1a;
+      --muted:#636a6f;
+      --border:#e6e8ea;
+      --soft:#f7f9f7;
+      --accent:#2e7d32;
+      --accent-900:#1b5e20;
+      --accent-100:#e6f4ea;
+      --shadow: 0 10px 30px rgba(0,0,0,0.08);
+      --radius:14px;
+      --radius-sm:10px;
+      --max:1200px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+      color:var(--text);
+      background:var(--bg);
+      line-height:1.5;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{max-width:var(--max);margin:0 auto;padding:0 20px}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;
+      padding:14px 20px;border-radius:12px;border:1px solid transparent;
+      font-weight:600;letter-spacing:.2px;cursor:pointer;transition:all .2s ease;
+      text-align:center;gap:10px;user-select:none;position:relative;overflow:hidden;
+    }
+    .btn.primary{background:var(--accent);color:#fff;box-shadow:0 8px 20px rgba(46,125,50,.25)}
+    .btn.primary:hover,.btn.primary.hovering{background:var(--accent-900);transform:translateY(-1px)}
+    .btn.secondary{background:var(--accent-100);color:var(--accent);border-color:transparent}
+    .btn.secondary:hover,.btn.secondary.hovering{background:#d7ecde}
+    .badge{
+      display:inline-flex;align-items:center;gap:8px;
+      background:var(--accent-100);color:var(--accent);
+      font-weight:600;font-size:.85rem;padding:8px 12px;border-radius:999px
+    }
+    .pill{display:inline-flex;gap:8px;align-items:center;padding:8px 12px;border-radius:999px;background:#f2f5f2;color:#3a3f3c;font-weight:600;font-size:.875rem}
+    .grid{display:grid;gap:28px}
+    .grid.cols-2{grid-template-columns:1.05fr .95fr}
+    .grid.cols-3{grid-template-columns:repeat(3,1fr)}
+    @media (max-width: 980px){
+      .grid.cols-2,.grid.cols-3{grid-template-columns:1fr}
+      .header .nav{display:none}
+      .header .menu-toggle{display:inline-flex}
+    }
+    /* Header */
+    .header{
+      position:sticky;top:0;z-index:50;background:rgba(255,255,255,.9);
+      backdrop-filter:saturate(180%) blur(8px);border-bottom:1px solid var(--border)
+    }
+    .header .row{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{
+      width:40px;height:40px;border-radius:10px;display:inline-flex;align-items:center;justify-content:center;
+      background:linear-gradient(135deg, var(--accent) 0%, var(--accent-900) 100%);color:#fff;font-weight:800
+    }
+    .brand .name{font-weight:800;letter-spacing:.3px}
+    .nav{display:flex;align-items:center;gap:18px}
+    .nav a{padding:10px 12px;border-radius:10px;color:#2d3330;font-weight:600}
+    .nav a:hover{background:#f1f5f2}
+    .menu-toggle{display:none;border:1px solid var(--border);background:#fff;border-radius:12px;padding:10px 12px;gap:8px}
+    /* Mobile menu */
+    .mobile-nav{display:none;border-top:1px solid var(--border);background:#fff}
+    .mobile-nav.open{display:block}
+    .mobile-nav a{display:block;padding:14px 20px;border-bottom:1px solid var(--border);font-weight:600}
+    /* Hero */
+    .hero{
+      position:relative;isolation:isolate;
+      background:linear-gradient(180deg,#ffffff 0%, #fafdfb 100%);
+      padding:48px 0 32px
+    }
+    .bg-decor{
+      position:absolute;inset:0;z-index:-1;opacity:.08;background-position:center;background-size:cover;background-repeat:no-repeat;
+      background-image:url('/demos/assets/planthood_co_uk_/image_1.png');
+    }
+    .hero .eyebrow{margin-bottom:14px}
+    .hero h1{
+      font-size:clamp(1.9rem, 2.6vw + 1.2rem, 3.2rem);
+      line-height:1.12;margin:0 0 14px;font-weight:900;letter-spacing:.2px
+    }
+    .hero p.lead{font-size:clamp(1rem, 1vw + .8rem, 1.2rem);color:#3c4340;margin:0 0 22px}
+    .hero .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px}
+    .hero-card{
+      background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow)
+    }
+    .trust-row{display:flex;align-items:center;gap:12px;color:#3c4340;font-size:.95rem;margin-top:10px;flex-wrap:wrap}
+    .stars{color:#f5a524;letter-spacing:2px}
+    .hero-img{
+      border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow)
+    }
+    /* Highlights */
+    .highlights{padding:26px 0 10px}
+    .highlight{
+      background:#fff;border:1px solid var(--border);border-radius:16px;padding:18px;display:flex;gap:14px;align-items:flex-start
+    }
+    .icon{
+      width:42px;height:42px;min-width:42px;border-radius:12px;display:inline-flex;align-items:center;justify-content:center;background:var(--soft);color:var(--accent)
+    }
+    .highlight h4{margin:2px 0 6px;font-size:1.05rem}
+    .highlight p{margin:0;color:var(--muted)}
+    /* How it works */
+    .section{padding:56px 0}
+    .section .kicker{color:var(--accent);font-weight:800;letter-spacing:.12em;text-transform:uppercase;font-size:.8rem;margin-bottom:10px}
+    .section h2{font-size:clamp(1.5rem, 1.6vw + 1.1rem, 2.2rem);margin:0 0 10px}
+    .section p.sub{color:#3b413f;margin:0 0 18px}
+    .card{
+      background:#fff;border:1px solid var(--border);border-radius:16px;padding:20px;box-shadow:var(--shadow)
+    }
+    .steps{counter-reset: step}
+    .step{display:flex;gap:16px;align-items:flex-start;margin-bottom:14px}
+    .step .count{
+      counter-increment: step; width:34px;height:34px;border-radius:50%;
+      display:inline-flex;align-items:center;justify-content:center;background:var(--accent-100);color:var(--accent);font-weight:800
+    }
+    /* Plans quick form */
+    .plan-form{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:8px}
+    .plan-form .field{display:flex;flex-direction:column;gap:6px}
+    .plan-form label{font-size:.85rem;color:#3b413f;font-weight:600}
+    .plan-form select,.plan-form input{
+      padding:12px 12px;border:1px solid var(--border);border-radius:12px;background:#fff;font-weight:600
+    }
+    .plan-form .full{grid-column:1/-1}
+    @media (max-width:760px){.plan-form{grid-template-columns:1fr 1fr}.plan-form .full{grid-column:1/-1}}
+    /* Delivery */
+    .list{display:grid;gap:12px}
+    .list .row{display:flex;gap:12px;align-items:flex-start;background:#fff;border:1px solid var(--border);border-radius:14px;padding:12px}
+    /* Sustainability bullets */
+    .bullets{display:grid;gap:12px}
+    .callout{
+      display:flex;justify-content:space-between;gap:16px;align-items:center;background:linear-gradient(180deg,#f4fbf6,#eaf6ed);
+      border:1px solid #def0e2;border-radius:16px;padding:16px
+    }
+    /* Testimonials */
+    .testimonials .quote{background:#fff;border:1px solid var(--border);border-radius:16px;padding:18px}
+    .quote .who{display:flex;align-items:center;gap:12px;margin-top:12px;color:#3b413f}
+    .avatar{width:40px;height:40px;border-radius:50%;background:var(--soft)}
+    /* FAQ */
+    .faq details{border:1px solid var(--border);border-radius:14px;padding:14px;background:#fff}
+    .faq summary{cursor:pointer;font-weight:700}
+    .faq details[open]{box-shadow:var(--shadow)}
+    .faq .hint{color:var(--muted);font-size:.95rem}
+    /* Contact */
+    .contact-form{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .contact-form .full{grid-column:1/-1}
+    .contact-form label{display:block;font-weight:700;margin-bottom:6px}
+    .contact-form input,.contact-form textarea{
+      width:100%;padding:12px;border-radius:12px;border:1px solid var(--border);font-size:1rem
+    }
+    .contact-form textarea{min-height:120px;resize:vertical}
+    @media (max-width:760px){.contact-form{grid-template-columns:1fr}}
+    /* Footer */
+    footer{padding:28px 0;border-top:1px solid var(--border);background:#fff}
+    .footgrid{display:grid;gap:16px;grid-template-columns:1fr auto}
+    @media (max-width:760px){.footgrid{grid-template-columns:1fr}}
+    .footnav{display:flex;flex-wrap:wrap;gap:14px;color:#3c4340}
+    .footnav a{padding:6px 10px;border-radius:10px}
+    .footnav a:hover{background:#f1f5f2}
+    .footer-note{color:#6b716d}
+    /* Utility */
+    .mt-6{margin-top:24px}
+    .mb-0{margin-bottom:0}
+    .shadow{box-shadow:var(--shadow)}
+    .rounded{border-radius:16px}
+    .center{text-align:center}
+    .hidden{display:none}
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container row">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">P</div>
+        <div>
+          <div class="name" aria-label="Planthood">Planthood</div>
+          <div class="pill" aria-label="Nationwide UK Delivery">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 6h13v11H3zM16 10h3l2 3v4h-5zM7 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm10 0a2 2 0 1 0-.001-3.999A2 2 0 0 0 17 19z"/></svg>
+            Free UK-wide delivery
+          </div>
+        </div>
+      </div>
+      <nav class="nav" aria-label="Primary">
+        <a href="#menu">Menu</a>
+        <a href="#how">How it works</a>
+        <a href="#delivery">Delivery</a>
+        <a href="#sustainability">Sustainability</a>
+        <a href="#faqs">FAQs</a>
+        <a href="#contact">Contact</a>
+        <a href="#get-started" class="btn primary">Get Started</a>
+      </nav>
+      <button class="menu-toggle btn secondary" aria-label="Open menu">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M3 6h18v2H3zM3 11h18v2H3zM3 16h18v2H3z"/></svg>
+        Menu
+      </button>
+    </div>
+    <div class="mobile-nav" id="mobileNav" aria-label="Mobile">
+      <a href="#menu">Menu</a>
+      <a href="#how">How it works</a>
+      <a href="#delivery">Delivery</a>
+      <a href="#sustainability">Sustainability</a>
+      <a href="#faqs">FAQs</a>
+      <a href="#contact">Contact</a>
+      <a href="#get-started" class="btn primary" style="margin:12px">Get Started</a>
+    </div>
+  </header>
+
+  <section class="hero" id="home">
+    <div class="bg-decor" aria-hidden="true"></div>
+    <div class="container">
+      <div class="grid cols-2" style="align-items:center">
+        <div>
+          <div class="eyebrow">
+            <span class="badge">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3 7h7l-5.5 4.3L18 21l-6-4-6 4 1.5-7.7L2 9h7z"/></svg>
+              Chef-Prepared Vegan
+            </span>
+          </div>
+          <h1>Experience Restaurant-Quality Vegan Meals Delivered to Your Door</h1>
+          <p class="lead">Restaurant-quality plant-based meals. Prepared by chefs and ready in 15 minutes. Healthy, seasonal, sustainable. Free UK wide delivery.</p>
+          <div class="actions">
+            <a href="#get-started" class="btn primary">Choose Your Meals</a>
+            <a href="#menu" class="btn secondary">View Menu</a>
+          </div>
+          <div class="trust-row">
+            <span class="stars" aria-label="5 stars">★★★★★</span>
+            <span>Trusted by thousands of plant-loving foodies</span>
+            <span class="pill">New seasonal menu weekly</span>
+          </div>
+          <div class="highlights mt-6 grid">
+            <div class="grid cols-3">
+              <div class="highlight">
+                <span class="icon" aria-hidden="true">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M19 7H5V5h14v2zm0 4H5V9h14v2zm0 4H5v-2h14v2zM8 21v-2h8v2H8z"/></svg>
+                </span>
+                <div><h4>Ready in 15 Minutes</h4><p>Chef-made sauces, marinades, and garnishes do the hard work.</p></div>
+              </div>
+              <div class="highlight">
+                <span class="icon" aria-hidden="true">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a7 7 0 0 1 7 7c0 5.25-7 13-7 13S5 14.25 5 9a7 7 0 0 1 7-7zm0 9.5A2.5 2.5 0 1 0 12 6a2.5 2.5 0 0 0 0 5.5z"/></svg>
+                </span>
+                <div><h4>Delivered Nationwide</h4><p>Free UK-wide delivery on Mondays and Thursdays.</p></div>
+              </div>
+              <div class="highlight">
+                <span class="icon" aria-hidden="true">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4c-4.418 0-8 2.686-8 6s3.582 6 8 6 8-2.686 8-6-3.582-6-8-6zm0 10a4 4 0 1 1-.001-8.001A4 4 0 0 1 12 14z"/><path d="M12 22a8.96 8.96 0 0 1-7.938-4.627l1.732-1A6.973 6.973 0 0 0 12 20c2.59 0 4.86-1.367 6.206-3.392l1.732 1A8.96 8.96 0 0 1 12 22z"/></svg>
+                </span>
+                <div><h4>Eco-Friendly</h4><p>100% recyclable or compostable packaging with a return & reuse program.</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="hero-card">
+          <div class="hero-img"><img src="/demos/assets/planthood_co_uk_/image_0.png" alt="Planthood vegan meal kits with fresh ingredients"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="menu" class="section">
+    <div class="container">
+      <div class="grid cols-2" style="align-items:center">
+        <div class="card">
+          <div class="kicker">About the kits</div>
+          <h2>Chef-Prepared, Plant-Powered, Effortless</h2>
+          <p class="sub">Each kit pairs chef-made mains, sauces, marinades, dressings and garnishes with fresh vegetables and grains. Follow simple steps to finish at home in minutes.</p>
+          <div class="steps">
+            <div class="step"><span class="count">1</span><div><strong>Pick your favourites</strong><div class="hint">Choose from a rotating seasonal menu each week.</div></div></div>
+            <div class="step"><span class="count">2</span><div><strong>We prep, you finish</strong><div class="hint">Sauces and garnishes are ready-to-use for restaurant-level flavour.</div></div></div>
+            <div class="step"><span class="count">3</span><div><strong>Dinner in 15 minutes</strong><div class="hint">Cook, toss, garnish—done. Healthy, delicious, and satisfying.</div></div></div>
+          </div>
+          <div class="actions mt-6">
+            <a href="#get-started" class="btn primary">Subscribe Now</a>
+            <a href="#how" class="btn secondary">How it works</a>
+          </div>
+        </div>
+        <div class="card">
+          <img src="/demos/assets/planthood_co_uk_/image_2.png" alt="Illustration of fresh plant-based ingredients and chef-prepared sauces">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="get-started" class="section" style="padding-top:24px">
+    <div class="container">
+      <div class="grid cols-2" style="align-items:center">
+        <div>
+          <div class="kicker">Flexible subscription</div>
+          <h2>Set your box the way you like it</h2>
+          <p class="sub">No commitment. Skip weeks or cancel anytime after your first order. Manage everything online until midday four days before delivery.</p>
+          <ul class="list">
+            <li class="row">
+              <span class="icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M10 17l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></span>
+              <div><strong>Fully customisable</strong><div class="hint">Choose number of meals, portion sizes, delivery day and frequency.</div></div>
+            </li>
+            <li class="row">
+              <span class="icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3 12l18-9-9 18-2-7-7-2z"/></svg></span>
+              <div><strong>Skip or swap</strong><div class="hint">Easily skip a week or swap meals before the cut-off.</div></div>
+            </li>
+            <li class="row">
+              <span class="icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M7 10v5l4-2.5z"/><path d="M12 3a9 9 0 100 18 9 9 0 000-18z" fill-opacity=".15"/></svg></span>
+              <div><strong>Ready fast</strong><div class="hint">Kits are designed to be on the table in around 15 minutes.</div></div>
+            </li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="kicker">Quick start</div>
+          <h3 class="mb-0">Build your first box</h3>
+          <p class="sub">You can adjust or cancel anytime.</p>
+          <form class="plan-form" onsubmit="event.preventDefault(); document.getElementById('planConfirm').classList.remove('hidden');">
+            <div class="field">
+              <label for="people">Portions per meal</label>
+              <select id="people" required>
+                <option value="2">2 portions</option>
+                <option value="3">3 portions</option>
+                <option value="4">4 portions</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="meals">Meals per week</label>
+              <select id="meals" required>
+                <option value="3">3 meals</option>
+                <option value="4">4 meals</option>
+                <option value="5">5 meals</option>
+                <option value="6">6 meals</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="day">Delivery day</label>
+              <select id="day" required>
+                <option>Monday</option>
+                <option>Thursday</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="freq">Frequency</label>
+              <select id="freq" required>
+                <option>Weekly</option>
+                <option>Fortnightly</option>
+                <option>Monthly</option>
+              </select>
+            </div>
+            <div class="field full">
+              <button type="submit" class="btn primary" style="width:100%">Get Started</button>
+            </div>
+            <div id="planConfirm" class="full hidden hint">Great choice! Next step: pick your meals from this week’s seasonal menu.</div>
+          </form>
+          <div class="trust-row">
+            <span class="pill" title="No fees">No commitment</span>
+            <span class="pill" title="Cut-off">Edit until midday 4 days before</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how" class="section" style="padding-top:24px">
+    <div class="container">
+      <div class="grid cols-2" style="align-items:center">
+        <div class="card">
+          <img src="/demos/assets/planthood_co_uk_/image_3.png" alt="Courier delivering Planthood refrigerated box">
+        </div>
+        <div>
+          <div class="kicker">Delivery & freshness</div>
+          <h2>Chilled, fresh and right on time</h2>
+          <p class="sub">Your box arrives chilled and can wait safely in a designated place if you’re out.</p>
+          <div class="list">
+            <div class="row">
+              <span class="icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M3 6h13v11H3zM16 10h3l2 3v4h-5z"/></svg></span>
+              <div><strong>Delivery days</strong><div class="hint">Mondays or Thursdays each week. Most boxes arrive before 6pm (8am–8pm window).</div></div>
+            </div>
+            <div class="row">
+              <span class="icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 8v5l4 2"/><path d="M12 2a10 10 0 100 20 10 10 0 000-20z" fill-opacity=".15"/></svg></span>
+              <div><strong>Cut-off times</strong><div class="hint">Make changes until 12pm four days before delivery (e.g. Thursday midday for Monday delivery).</div></div>
+            </div>
+            <div class="row">
+              <span class="icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M18 6l-6 6-6-6"/><path d="M6 12l6 6 6-6" fill-opacity=".15"/></svg></span>
+              <div><strong>Stay-chilled packaging</strong><div class="hint">Refrigerated boxes keep cool up to 48 hours from packing.</div></div>
+            </div>
+            <div class="row">
+              <span class="icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M10 17l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></span>
+              <div><strong>Freshness</strong><div class="hint">Meals have best-before dates typically 3–5 days after delivery.</div></div>
+            </div>
+          </div>
+          <div class="actions mt-6">
+            <a href="#get-started" class="btn primary">Start Your Subscription</a>
+            <a href="#faqs" class="btn secondary">Check FAQs</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="sustainability" class="section">
+    <div class="container">
+      <div class="grid cols-2" style="align-items:center">
+        <div>
+          <div class="kicker">Sustainability</div>
+          <h2>Better for you, better for the planet</h2>
+          <p class="sub">We prioritise low-impact ingredients and packaging that’s either compostable or recyclable.</p>
+          <div class="bullets">
+            <div class="row">
+              <span class="icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l4 7H8l4-7zm0 20l-4-7h8l-4 7zM2 12l7-4v8l-7-4zm20 0l-7 4V8l7 4z"/></svg></span>
+              <div><strong>Thoughtful materials</strong><div class="hint">Brown kraft paper is compostable; pouches and dressing pots are rinsable and recyclable.</div></div>
+            </div>
+            <div class="row">
+              <span class="icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5a2 2 0 00-2 2v14l5-3h11a2 2 0 002-2V5a2 2 0 00-2-2z"/></svg></span>
+              <div><strong>Non-toxic cooling</strong><div class="hint">Kraft-lined gel packs are non-toxic. For disposal, pour down the sink with hot water.</div></div>
+            </div>
+            <div class="row">
+              <span class="icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10h-2a8 8 0 10-8 8v2z"/></svg></span>
+              <div><strong>Return & reuse</strong><div class="hint">Send insulation liners and ice packs back for reuse via our simple portal.</div></div>
+            </div>
+          </div>
+          <div class="callout mt-6">
+            <div>
+              <strong>Join our packaging return program to help reduce waste.</strong>
+              <div class="hint">Fill a box with 3–4 weeks of liners and gels, attach your free label and drop off.</div>
+            </div>
+            <a class="btn secondary" href="https://www.clicksit.com/planthood/" target="_blank" rel="noopener">Return Portal</a>
+          </div>
+        </div>
+        <div class="card">
+          <img src="/demos/assets/planthood_co_uk_/image_4.png" alt="Sustainable Planthood packaging: recyclable, compostable materials">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section testimonials" style="padding-top:24px">
+    <div class="container">
+      <div class="center">
+        <div class="kicker">Loved by our community</div>
+        <h2>Real people. Real flavour. Zero faff.</h2>
+      </div>
+      <div class="grid cols-3 mt-6">
+        <div class="quote">
+          <div class="stars">★★★★★</div>
+          “The sauces are unreal. Dinner in 15 minutes actually tastes like a restaurant!”
+          <div class="who">
+            <div class="avatar" aria-hidden="true"></div>
+            <div><strong>Sofia M.</strong><div class="hint">London</div></div>
+          </div>
+        </div>
+        <div class="quote">
+          <div class="stars">★★★★★</div>
+          “Love the flexible subscription. I skip when I travel and pick up where I left off.”
+          <div class="who">
+            <div class="avatar" aria-hidden="true"></div>
+            <div><strong>James K.</strong><div class="hint">Manchester</div></div>
+          </div>
+        </div>
+        <div class="quote">
+          <div class="stars">★★★★★</div>
+          “Sustainable packaging and genuinely delicious vegan meals. Perfect combo.”
+          <div class="who">
+            <div class="avatar" aria-hidden="true"></div>
+            <div><strong>Priya S.</strong><div class="hint">Bristol</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="center mt-6">
+        <a href="#get-started" class="btn primary">Build Your Box</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="faqs" class="section" style="padding-top:24px">
+    <div class="container">
+      <div class="grid cols-2" style="align-items:start">
+        <div>
+          <div class="kicker">FAQs</div>
+          <h2>Everything you need to know</h2>
+          <p class="sub">Have questions? Check our FAQs or contact us — we reply within 24 hours.</p>
+          <div class="faq grid">
+            <details>
+              <summary>How does Planthood work?</summary>
+              <div class="hint">Pick your meals from our weekly seasonal menu. We prep mains, sauces and garnishes; you add fresh veg and grains included in your kit and finish at home—usually in 15 minutes.</div>
+            </details>
+            <details>
+              <summary>Can I pause or cancel?</summary>
+              <div class="hint">Yes. There’s no commitment. Skip weeks or cancel anytime after your first order via your online account before the cut-off.</div>
+            </details>
+            <details>
+              <summary>What are the cut-off times?</summary>
+              <div class="hint">Midday four days before delivery (e.g., Thursday midday for Monday delivery).</div>
+            </details>
+            <details>
+              <summary>What if I’m not home?</summary>
+              <div class="hint">Your refrigerated box stays chilled up to 48 hours from packing and can be left in a safe place.</div>
+            </details>
+            <details>
+              <summary>Is your packaging recyclable?</summary>
+              <div class="hint">Yes. Kraft paper is compostable, pouches and dressing pots are recyclable when rinsed, and gel packs are non-toxic.</div>
+            </details>
+            <details>
+              <summary>Do you have referral discounts?</summary>
+              <div class="hint">Yes—refer friends for savings. Discount codes are single-use per order and may be updated or withdrawn at any time.</div>
+            </details>
+          </div>
+        </div>
+        <div class="card">
+          <h3 class="mb-0">Need a hand?</h3>
+          <p class="sub">Our team is here to help. We respond to all messages within 24 hours.</p>
+          <form class="contact-form" id="contact" onsubmit="event.preventDefault(); document.getElementById('contactSuccess').classList.remove('hidden');">
+            <div>
+              <label for="cname">Name</label>
+              <input id="cname" type="text" placeholder="Your name">
+            </div>
+            <div>
+              <label for="cemail">Email *</label>
+              <input id="cemail" type="email" placeholder="you@example.com" required>
+            </div>
+            <div class="full">
+              <label for="cphone">Phone (optional)</label>
+              <input id="cphone" type="tel" placeholder="+44...">
+            </div>
+            <div class="full">
+              <label for="cmsg">Message</label>
+              <textarea id="cmsg" placeholder="How can we help?"></textarea>
+            </div>
+            <div class="full">
+              <button type="submit" class="btn primary">Send</button>
+            </div>
+            <div id="contactSuccess" class="full hint hidden">Thanks! We’ve received your message and will reply within 24 hours.</div>
+          </form>
+          <div class="callout mt-6">
+            <div>
+              <strong>Still stuck?</strong>
+              <div class="hint">Try our chatbot any time, or explore our Terms, Privacy and Refund policies below.</div>
+            </div>
+            <a href="#footer" class="btn secondary">Go to Footer</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer id="footer">
+    <div class="container footgrid">
+      <div class="footer-note">
+        <div class="kicker" style="margin-bottom:6px">Planthood</div>
+        Planthood: Chef-Prepared Vegan Meal Kits Delivered Nationwide. Healthy, seasonal, sustainable. Free UK-wide delivery on Mondays and Thursdays.
+      </div>
+      <div class="footnav" aria-label="Footer">
+        <a href="#menu">Menu</a>
+        <a href="#how">How it works</a>
+        <a href="#delivery">Delivery</a>
+        <a href="#sustainability">Sustainability</a>
+        <a href="#faqs">FAQs</a>
+        <a href="#contact">Contact</a>
+        <a href="#" title="Terms of Service">Terms</a>
+        <a href="#" title="Privacy Policy">Privacy</a>
+        <a href="#" title="Refund Policy">Refunds</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Smooth scrolling for internal links
+    document.addEventListener('click', function(e){
+      const a = e.target.closest('a[href^="#"]');
+      if(!a) return;
+      const id = a.getAttribute('href').slice(1);
+      if(!id) return;
+      const el = document.getElementById(id) || document.querySelector('[name="'+id+'"]');
+      if(el){
+        e.preventDefault();
+        el.scrollIntoView({behavior:'smooth', block:'start'});
+        const mobileNav = document.getElementById('mobileNav');
+        if(mobileNav && mobileNav.classList.contains('open')) mobileNav.classList.remove('open');
+      }
+    });
+
+    // Mobile menu toggle
+    const toggleBtn = document.querySelector('.menu-toggle');
+    const mobileNav = document.getElementById('mobileNav');
+    if(toggleBtn){
+      toggleBtn.addEventListener('click', ()=> mobileNav.classList.toggle('open'));
+    }
+
+    // Simple button hover effect (JS-enhanced)
+    const buttons = document.querySelectorAll('.btn');
+    buttons.forEach(btn=>{
+      btn.addEventListener('mouseenter', ()=> btn.classList.add('hovering'));
+      btn.addEventListener('mouseleave', ()=> btn.classList.remove('hovering'));
+      // Ripple click
+      btn.addEventListener('click', function(e){
+        const circle = document.createElement('span');
+        const d = Math.max(this.clientWidth, this.clientHeight);
+        circle.style.width = circle.style.height = d + 'px';
+        const rect = this.getBoundingClientRect();
+        circle.style.left = (e.clientX - rect.left - d/2) + 'px';
+        circle.style.top = (e.clientY - rect.top - d/2) + 'px';
+        circle.style.position = 'absolute';
+        circle.style.borderRadius = '50%';
+        circle.style.background = 'rgba(255,255,255,.35)';
+        circle.style.transform = 'scale(0)';
+        circle.style.animation = 'ripple .6s ease-out';
+        circle.style.pointerEvents = 'none';
+        this.appendChild(circle);
+        circle.addEventListener('animationend', ()=> circle.remove());
+      });
+    });
+
+    // Ripple animation
+    const style = document.createElement('style');
+    style.textContent = '@keyframes ripple{to{transform:scale(2);opacity:0}}';
+    document.head.appendChild(style);
+  </script>
+
+  <script>
+    window.chatbotConfig = {
+      apiUrl: "https://makeitsimpl.app.n8n.cloud/webhook/chat",
+      websiteUrl: "https://planthood.co.uk/",
+      headers: {
+        "Authorization": "Basic Y2hhdGJvdDppbG92ZWNoYXRib3RzITEyMzQ="
+      }
+    };
+  </script>
+  <script src="https://makeitsimpl.ai/chatbot-widget.js"></script>
+</body>
+</html>
