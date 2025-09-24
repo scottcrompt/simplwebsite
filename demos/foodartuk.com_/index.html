@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FoodArt UK Ltd | Ethnic Grocery Wholesale UK | FMCG Supplier London</title>
+<meta name="description" content="FoodArt UK — More than a wholesaler, a reliable business partner. Ethnic grocery & FMCG wholesale across the UK. Exclusive products, unbeatable discounts, free delivery thresholds, and multilingual support.">
+<meta name="keywords" content="Ethnic Grocery Wholesale UK, FMCG Supplier London, American Snacks Distributor UK, Ethnic Food UK Wholesale, Wholesale Drinks, Confectionery Wholesale, Bravo, Fanta, Takis, Organic Coffee Wholesale">
+<link rel="canonical" href="https://foodartuk.com/">
+<meta property="og:title" content="FoodArt UK — Your Trusted Partner in Ethnic & FMCG Wholesale">
+<meta property="og:description" content="Exclusive new arrivals, unbeatable discounts, free delivery thresholds, and flexible logistics. Register for live pricing today.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://foodartuk.com/">
+<meta property="og:image" content="/demos/assets/foodartuk_com_/image_0.png">
+<meta name="theme-color" content="#F1F4F6">
+<style>
+  :root{
+    --bg:#F1F4F6;
+    --ink:#0f172a;
+    --muted:#4b5563;
+    --brand:#0ea5e9;
+    --brand-ink:#0b4b63;
+    --accent:#16a34a;
+    --danger:#ef4444;
+    --card:#ffffff;
+    --ring:rgba(14,165,233,.35);
+    --shadow:0 10px 25px rgba(2,8,23,.08);
+    --radius:14px;
+    --radius-sm:10px;
+    --max:1200px;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Helvetica Neue",Arial,"Apple Color Emoji","Segoe UI Emoji";color:var(--ink);background:var(--bg)}
+  img{max-width:100%;display:block}
+  a{text-decoration:none;color:inherit}
+  button{font:inherit}
+  .container{width:100%;max-width:var(--max);margin-inline:auto;padding-inline:clamp(16px,4vw,28px)}
+  .topbar{background:linear-gradient(90deg,#e6f6fd, #f4fbff);color:#0b3950;font-size:.9rem}
+  .topbar-inner{display:flex;gap:14px;align-items:center;justify-content:space-between;padding:8px 0;flex-wrap:wrap}
+  .topbar .contact{display:flex;gap:16px;flex-wrap:wrap}
+  .topbar .contact a{display:flex;align-items:center;gap:8px}
+  .badge{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid #e5e7eb;border-radius:999px;padding:6px 12px;box-shadow:var(--shadow)}
+  .badge .dot{width:8px;height:8px;border-radius:50%;background:var(--accent)}
+  header{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.8);backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid #e5e7eb}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .logo{width:38px;height:38px;border-radius:8px;background:linear-gradient(135deg,#0ea5e9,#22c55e);box-shadow:0 5px 15px rgba(14,165,233,.35)}
+  .brand h1{font-size:1.1rem;margin:0;font-weight:800;letter-spacing:.2px}
+  .tag{font-size:.8rem;color:var(--muted)}
+  .nav-links{display:flex;gap:18px;align-items:center}
+  .nav-links a{color:#0b3950;font-weight:600;font-size:.95rem}
+  .cta{display:inline-flex;align-items:center;gap:10px;background:var(--brand);color:#fff;border:none;border-radius:999px;padding:12px 18px;font-weight:700;box-shadow:0 10px 20px rgba(14,165,233,.25);transition:transform .2s ease,box-shadow .2s ease}
+  .cta.secondary{background:#0b3950}
+  .cta.link{background:transparent;color:var(--brand);padding:0}
+  .cta:focus{outline:3px solid var(--ring);outline-offset:2px}
+  .cta.hovered{transform:translateY(-1px);box-shadow:0 14px 26px rgba(14,165,233,.35)}
+  .menu-toggle{display:none;background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:10px 12px}
+  @media (max-width: 980px){
+    .nav-links{display:none;position:absolute;left:16px;right:16px;top:64px;background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:16px;flex-direction:column;box-shadow:var(--shadow)}
+    .nav-links.open{display:flex}
+    .menu-toggle{display:inline-flex;align-items:center;gap:8px}
+  }
+
+  .hero{position:relative;background:var(--bg)}
+  .hero::before{content:"";position:absolute;inset:0;background-image:url('/demos/assets/foodartuk_com_/image_1.png');background-size:cover;background-position:center;opacity:.06;pointer-events:none}
+  .hero-inner{position:relative;display:grid;grid-template-columns:1.1fr 1fr;gap:32px;align-items:center;padding:clamp(24px,5vw,48px) 0}
+  @media (max-width: 980px){.hero-inner{grid-template-columns:1fr}}
+  .hero h2{font-size:clamp(1.6rem,3.3vw,2.6rem);line-height:1.2;margin:0 0 12px;font-weight:900;letter-spacing:.2px}
+  .hero p{font-size:clamp(1rem,1.5vw,1.125rem);color:#0b3950;margin:0 0 22px}
+  .hero-ctas{display:flex;gap:12px;flex-wrap:wrap}
+  .pill{display:inline-flex;gap:8px;align-items:center;border-radius:999px;border:1px dashed #cbd5e1;background:#fff;padding:8px 12px;color:#0b3950}
+  .benefits{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
+  .card{background:var(--card);border:1px solid #e5e7eb;border-radius:var(--radius);box-shadow:var(--shadow)}
+  .grid{display:grid;gap:18px}
+  .grid-cols-3{grid-template-columns:repeat(3,1fr)}
+  .grid-cols-2{grid-template-columns:repeat(2,1fr)}
+  @media (max-width: 980px){.grid-cols-3,.grid-cols-2{grid-template-columns:1fr}}
+
+  .ticker{overflow:auto;white-space:nowrap;background:#0b3950;color:#e6f6fd}
+  .ticker-inner{display:inline-flex;gap:24px;align-items:center;padding:10px 0}
+  .ticker .chip{display:inline-flex;align-items:center;gap:8px;background:#083042;color:#d7f3ff;border:1px solid #0a4259;border-radius:999px;padding:6px 12px}
+
+  .section{padding:clamp(30px,6vw,64px) 0}
+  .section h3{font-size:clamp(1.25rem,2.5vw,1.75rem);margin:0 0 12px}
+  .section p.lead{color:var(--muted);margin:0 0 18px}
+  .features{display:grid;gap:16px;grid-template-columns:1.2fr .8fr;align-items:center}
+  @media (max-width:980px){.features{grid-template-columns:1fr;}}
+  .feature-list{display:grid;gap:14px;grid-template-columns:1fr 1fr}
+  @media (max-width:720px){.feature-list{grid-template-columns:1fr}}
+  .feature{display:flex;gap:12px;align-items:flex-start;background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:14px}
+  .icon{width:34px;height:34px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#e6f6fd,#f0fff8);color:#0b3950;font-weight:900}
+
+  .cards{display:grid;gap:16px;grid-template-columns:repeat(4,1fr)}
+  @media (max-width:1100px){.cards{grid-template-columns:repeat(3,1fr)}}
+  @media (max-width:820px){.cards{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:520px){.cards{grid-template-columns:1fr}}
+  .product{overflow:hidden}
+  .product img{border-top-left-radius:var(--radius);border-top-right-radius:var(--radius)}
+  .product .body{padding:12px}
+  .product .title{font-weight:800;margin:0 0 6px}
+  .price{color:var(--accent);font-weight:800}
+  .tagline{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+  .tagline .mini{font-size:.75rem;background:#eef6ff;border:1px solid #dbeafe;border-radius:999px;padding:4px 8px;color:#0b4b63}
+
+  .promo-banner{position:relative;overflow:hidden}
+  .promo-banner img{width:100%;border-radius:var(--radius)}
+  .promo-overlay{position:absolute;inset:auto 0 0 0;background:linear-gradient(180deg,transparent,rgba(0,0,0,.6));color:#fff;padding:18px;border-bottom-left-radius:var(--radius);border-bottom-right-radius:var(--radius)}
+  .promo-overlay .row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+  .promo-overlay .save{background:#16a34a;color:#fff;border-radius:10px;padding:6px 10px;font-weight:800}
+
+  .steps{display:grid;gap:14px;grid-template-columns:repeat(3,1fr)}
+  @media (max-width:980px){.steps{grid-template-columns:1fr}}
+  .step{padding:16px}
+  .step h4{margin:6px 0 8px}
+  .contacts{display:grid;gap:14px;grid-template-columns:2fr 1fr}
+  @media (max-width:980px){.contacts{grid-template-columns:1fr}}
+  .contact-card{padding:16px}
+  .hours{display:flex;gap:16px;flex-wrap:wrap;margin-top:10px}
+  .hours .slot{background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:8px 12px}
+  .delivery-grid{display:grid;gap:16px;grid-template-columns:repeat(3,1fr)}
+  @media (max-width:980px){.delivery-grid{grid-template-columns:1fr}}
+  .note{font-size:.95rem;color:var(--muted)}
+  .testimonials{display:grid;gap:16px;grid-template-columns:repeat(3,1fr)}
+  @media (max-width:980px){.testimonials{grid-template-columns:1fr}}
+  .quote{padding:16px}
+  .stars{color:#f59e0b}
+  .cta-footer{background:linear-gradient(180deg,#e6f6fd,#fff)}
+
+  .newsletter{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+  .input{background:#fff;border:1px solid #e5e7eb;border-radius:999px;padding:12px 14px;min-width:260px;outline:none}
+  .input:focus{border-color:#bae6fd;box-shadow:0 0 0 4px var(--ring)}
+  footer{background:#0b3950;color:#d7e9f4}
+  .footer-grid{display:grid;gap:16px;grid-template-columns:2fr 1fr 1fr 1fr}
+  @media (max-width:980px){.footer-grid{grid-template-columns:1fr 1fr}}
+  .footer-grid a{color:#d7e9f4}
+  .footer-bottom{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.15);padding-top:14px;margin-top:14px}
+
+  .sr-only{position:absolute !important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
+</style>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Organization",
+  "name":"FoodArt UK Ltd",
+  "url":"https://foodartuk.com/",
+  "logo":"https://foodartuk.com/wp-content/uploads/logo.png",
+  "email":"info@foodartuk.com",
+  "telephone":"+44 20 8805 0088",
+  "sameAs":["https://foodartuk.com/"],
+  "address":{
+    "@type":"PostalAddress",
+    "streetAddress":"Brimsdown, Enfield",
+    "addressLocality":"London",
+    "postalCode":"EN3 7PY",
+    "addressCountry":"GB"
+  }
+}
+</script>
+</head>
+<body>
+<div class="topbar">
+  <div class="container topbar-inner">
+    <div class="contact">
+      <span class="badge"><span class="dot"></span> Free delivery: London £500+, Outside London £1000+</span>
+      <span class="badge"><span class="dot" style="background:#0ea5e9"></span> Collection discounts available</span>
+      <span class="badge"><span class="dot" style="background:#ef4444"></span> Breakfast products up to 50–70% off</span>
+    </div>
+    <div class="contact">
+      <a href="tel:02088050088" aria-label="Call FoodArt UK"><strong>020 8805 0088</strong></a>
+      <a href="mailto:info@foodartuk.com" aria-label="Email FoodArt UK">info@foodartuk.com</a>
+      <a href="https://wa.me/447389764369" target="_blank" rel="noopener" aria-label="WhatsApp FoodArt UK">WhatsApp +44 07389 764 369</a>
+    </div>
+  </div>
+</div>
+
+<header>
+  <div class="container nav">
+    <a href="#top" class="brand">
+      <div class="logo" aria-hidden="true"></div>
+      <div>
+        <h1>FoodArt UK Ltd</h1>
+        <div class="tag">More than a wholesaler — a reliable business partner.</div>
+      </div>
+    </a>
+    <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="primaryNav">Menu ▾</button>
+    <nav class="nav-links" id="primaryNav" aria-label="Primary">
+      <a href="https://foodartuk.com/shop/" target="_self">Shop</a>
+      <a href="#new-arrivals">New Arrivals</a>
+      <a href="#promotions">Promotions</a>
+      <a href="#delivery">Delivery</a>
+      <a href="#about">About</a>
+      <a href="https://foodartuk.com/help-faqs/">Help & FAQs</a>
+      <a href="https://foodartuk.com/login/">Login</a>
+      <a href="https://foodartuk.com/register/" class="cta">Register for Live Pricing</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="container hero-inner">
+    <div>
+      <div class="pill">Trusted UK-wide, specialised in ethnic grocery & FMCG</div>
+      <h2>Welcome to FoodArt UK — Your Trusted Partner in Ethnic & FMCG Wholesale</h2>
+      <p>Discover exclusive new arrivals, unbeatable discounts, and tailored offers designed to grow your business across multicultural neighbourhoods.</p>
+      <div class="benefits">
+        <div class="pill">Exclusive: Organic Coffee Special Blend</div>
+        <div class="pill">New: Fit Low Carb Sugar-Free Candy Bars</div>
+        <div class="pill">Bravo & Fanta global flavours</div>
+      </div>
+      <div class="hero-ctas">
+        <a href="https://foodartuk.com/shop/" class="cta" id="ctaShop">Shop Now</a>
+        <a href="https://foodartuk.com/register/" class="cta secondary" id="ctaRegister">Register for Live Pricing</a>
+        <a href="https://foodartuk.com/contact-us/" class="cta link" id="ctaContact">Contact Us →</a>
+      </div>
+      <div class="tagline">
+        <span class="mini">Free Shipping London £500+</span>
+        <span class="mini">Outside London £1000+</span>
+        <span class="mini">Collection Discounts</span>
+        <span class="mini">Unbeatable Offers</span>
+      </div>
+    </div>
+    <div aria-hidden="true">
+      <img src="/demos/assets/foodartuk_com_/image_0.png" alt="FoodArt UK wholesale products hero">
+    </div>
+  </div>
+</section>
+
+<div class="ticker" role="region" aria-label="Promotions ticker">
+  <div class="container ticker-inner">
+    <span class="chip">Exclusive Product · Organic Coffee SPECIAL BLEND · Fresh</span>
+    <span class="chip">BREAKFAST PRODUCTS ON SALE · Up To 50–70%</span>
+    <span class="chip">FREE SHIPPING & RETURN · London £500+ · Outside London £1000+</span>
+    <span class="chip">COLLECTION DISCOUNT · Available Now</span>
+    <span class="chip">UNBEATABLE OFFERS · Weekly</span>
+    <span class="chip">E MAIL US · info@foodartuk.com</span>
+    <span class="chip">New Arrivals · American & European Favourites</span>
+  </div>
+</div>
+
+<section class="section" id="about">
+  <div class="container features">
+    <div>
+      <h3>Why Choose FoodArt UK</h3>
+      <p class="lead">We’re more than a supplier — we are your growth partner. Serving off‑licences, corner shops, supermarkets, independent retailers, and national chains like Nisa, Premier, and Budgens.</p>
+      <div class="feature-list">
+        <div class="feature">
+          <div class="icon">✓</div>
+          <div>
+            <strong>Exclusive & Trending Range</strong>
+            <div class="note">American snacks, European favourites, ethnic grocery essentials, and seasonal bestsellers.</div>
+          </div>
+        </div>
+        <div class="feature">
+          <div class="icon">£</div>
+          <div>
+            <strong>Unbeatable Discounts</strong>
+            <div class="note">Breakfast products up to 50–70% off. Collection discounts and regular promotions.</div>
+          </div>
+        </div>
+        <div class="feature">
+          <div class="icon">🚚</div>
+          <div>
+            <strong>Flexible Logistics</strong>
+            <div class="note">Own fleet in key UK areas and pallet courier partners nationwide. Free delivery thresholds.</div>
+          </div>
+        </div>
+        <div class="feature">
+          <div class="icon">👋</div>
+          <div>
+            <strong>Personalised Service</strong>
+            <div class="note">Multilingual sales team offering tailored deals, live pricing and product guidance.</div>
+          </div>
+        </div>
+      </div>
+      <div class="hours">
+        <div class="slot">Sales: Mon–Fri 08:00–17:00</div>
+        <div class="slot">Warehouse: Mon–Fri 08:00–18:00 · EN3 7PY</div>
+      </div>
+      <div class="newsletter">
+        <input class="input" type="email" id="newsletterEmail" placeholder="Your business email" aria-label="Your business email">
+        <button class="cta" id="newsletterBtn">Get Deals by Email</button>
+        <span id="newsletterMsg" class="note" aria-live="polite"></span>
+      </div>
+    </div>
+    <div>
+      <div class="card"><img src="/demos/assets/foodartuk_com_/image_2.png" alt="FoodArt UK warehouse and delivery illustration" style="border-radius:12px"></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="new-arrivals">
+  <div class="container">
+    <h3>Featured Products & New Arrivals</h3>
+    <p class="lead">Explore exclusive launches and fast-sellers curated for multicultural neighbourhoods.</p>
+    <div class="cards">
+      <div class="card product">
+        <img src="/demos/assets/foodartuk_com_/image_4.png" alt="Organic Coffee Special Blend">
+        <div class="body">
+          <div class="title">Organic Coffee Special Blend</div>
+          <div class="note">Exclusive · Rich & aromatic</div>
+          <div class="tagline"><span class="mini">New Arrival</span><span class="mini">Organic</span></div>
+          <div style="margin-top:10px;display:flex;gap:10px;flex-wrap:wrap">
+            <a href="https://foodartuk.com/shop/" class="cta">Shop Coffee</a>
+            <a href="https://foodartuk.com/register/" class="cta link">See Live Pricing →</a>
+          </div>
+        </div>
+      </div>
+      <div class="card product">
+        <img src="/demos/assets/foodartuk_com_/image_4.png" alt="Fit Low Carb Candy Bar">
+        <div class="body">
+          <div class="title">Fit Low Carb Candy Bars</div>
+          <div class="note">Sugar-free · Low-carb</div>
+          <div class="tagline"><span class="mini">New</span><span class="mini">No Added Sugar</span></div>
+          <div style="margin-top:10px;display:flex;gap:10px;flex-wrap:wrap">
+            <a href="https://foodartuk.com/shop/" class="cta">Shop Confectionery</a>
+            <a href="https://foodartuk.com/register/" class="cta link">See Live Pricing →</a>
+          </div>
+        </div>
+      </div>
+      <div class="card product">
+        <img src="/demos/assets/foodartuk_com_/image_4.png" alt="Bravo Drinks Range">
+        <div class="body">
+          <div class="title">Bravo Drinks Range</div>
+          <div class="note">Blueberry, Green Apple, Multivitamin, Peach, Red Grape, Sour Cherry, Strawberry</div>
+          <div class="tagline"><span class="mini">Top Seller</span><span class="mini">Drinks</span></div>
+          <div style="margin-top:10px;display:flex;gap:10px;flex-wrap:wrap">
+            <a href="https://foodartuk.com/shop/" class="cta">Shop Drinks</a>
+            <a href="https://foodartuk.com/register/" class="cta link">See Live Pricing →</a>
+          </div>
+        </div>
+      </div>
+      <div class="card product">
+        <img src="/demos/assets/foodartuk_com_/image_4.png" alt="Fanta Global Flavours">
+        <div class="body">
+          <div class="title">Fanta Global Flavours</div>
+          <div class="note">Japanese Muscat, Plum, Melon Soda, Chinese White Peach, Watermelon & more</div>
+          <div class="tagline"><span class="mini">New Arrival</span><span class="mini">Imported</span></div>
+          <div style="margin-top:10px;display:flex;gap:10px;flex-wrap:wrap">
+            <a href="https://foodartuk.com/shop/" class="cta">Shop Fanta</a>
+            <a href="https://foodartuk.com/register/" class="cta link">See Live Pricing →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:18px;display:flex;gap:12px;flex-wrap:wrap">
+      <a href="https://foodartuk.com/shop/" class="cta">Shop Full Range</a>
+      <a href="https://foodartuk.com/category/model/" class="cta link">Confectionery →</a>
+      <a href="https://foodartuk.com/shop/" class="cta link">Drinks →</a>
+      <a href="https://foodartuk.com/shop/" class="cta link">Crisps →</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="promotions">
+  <div class="container">
+    <div class="promo-banner card">
+      <img src="/demos/assets/foodartuk_com_/image_3.png" alt="Promotional banner for breakfast sale">
+      <div class="promo-overlay">
+        <div class="row">
+          <span class="save">Up to 50–70% OFF Breakfast</span>
+          <span>Unbeatable discounts on top breakfast lines. Stock up now.</span>
+        </div>
+        <div class="row" style="margin-top:10px">
+          <a href="https://foodartuk.com/register/" class="cta">Register to Unlock Prices</a>
+          <a href="https://foodartuk.com/shop/" class="cta secondary">Browse Breakfast</a>
+          <a href="https://foodartuk.com/contact-us/" class="cta link">Talk to Sales →</a>
+        </div>
+      </div>
+    </div>
+    <div class="grid grid-cols-3" style="margin-top:16px">
+      <div class="card" style="padding:16px">
+        <strong>Free Shipping Thresholds</strong>
+        <div class="note">London: orders £500+ · Outside London: orders £1000+ qualify for free delivery.</div>
+      </div>
+      <div class="card" style="padding:16px">
+        <strong>Collection Discounts</strong>
+        <div class="note">Save more by collecting from our EN3 7PY warehouse.</div>
+      </div>
+      <div class="card" style="padding:16px">
+        <strong>Newsletter Deals</strong>
+        <div class="note">Sign up to receive special offers and new arrivals first.</div>
+        <div class="newsletter">
+          <input class="input" type="email" id="newsletterEmail2" placeholder="Business email for offers" aria-label="Business email for offers">
+          <button class="cta" id="newsletterBtn2">Subscribe</button>
+          <span id="newsletterMsg2" class="note" aria-live="polite"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="ordering">
+  <div class="container contacts">
+    <div class="card contact-card">
+      <h3>Ordering & Customer Support</h3>
+      <p class="lead">Register online to access live pricing, the full catalogue, and special campaigns. Order via phone, email, WhatsApp, or our online portal.</p>
+      <div class="steps">
+        <div class="card step">
+          <div class="icon">1</div>
+          <h4>Create Account</h4>
+          <div class="note">Register to unlock trade prices, inventory, and exclusive campaigns.</div>
+          <div style="margin-top:8px"><a class="cta" href="https://foodartuk.com/register/">Register Now</a></div>
+        </div>
+        <div class="card step">
+          <div class="icon">2</div>
+          <h4>Place Your Order</h4>
+          <div class="note">Add products online or message our sales team for curated picks and deals.</div>
+          <div style="margin-top:8px"><a class="cta secondary" href="https://foodartuk.com/shop/">Shop Online</a></div>
+        </div>
+        <div class="card step">
+          <div class="icon">3</div>
+          <h4>Confirm & Deliver</h4>
+          <div class="note">We confirm, schedule delivery, and keep you informed every step.</div>
+        </div>
+      </div>
+      <div class="hours">
+        <div class="slot">Sales Hours: Mon–Fri 08:00–17:00</div>
+        <div class="slot">Support: Phone · WhatsApp · Email</div>
+        <div class="slot">Multilingual assistance available</div>
+      </div>
+    </div>
+    <div class="card contact-card">
+      <h4>Contact Sales</h4>
+      <div class="note">Real people. Fast responses.</div>
+      <div style="margin-top:10px;display:grid;gap:10px">
+        <a class="cta" href="tel:02088050088">Call 020 8805 0088</a>
+        <a class="cta secondary" href="mailto:info@foodartuk.com">Email info@foodartuk.com</a>
+        <a class="cta link" href="https://wa.me/447389764369" target="_blank" rel="noopener">WhatsApp +44 07389 764 369 →</a>
+        <a class="cta link" href="https://foodartuk.com/contact-us/">Contact Form →</a>
+      </div>
+      <div class="note" style="margin-top:12px">VAT excluded; added at checkout. Payment: bank transfer (courier deliveries) or cash on delivery (own fleet). Account terms available for regulars.</div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="delivery">
+  <div class="container">
+    <h3>Delivery & Collection Options</h3>
+    <p class="lead">Safe, reliable and flexible logistics designed for busy retailers.</p>
+    <div class="delivery-grid">
+      <div class="card" style="padding:16px">
+        <strong>1) Warehouse Collection</strong>
+        <div class="note">Collect from our Brimsdown, Enfield warehouse (EN3 7PY). Cash & carry available.</div>
+        <div class="tagline"><span class="mini">Collection Discount</span><span class="mini">Mon–Fri 08:00–18:00</span></div>
+      </div>
+      <div class="card" style="padding:16px">
+        <strong>2) Direct Delivery · FoodArt Fleet</strong>
+        <div class="note">Free in covered areas on orders £500+. Delivery dates coordinated by our team.</div>
+        <div class="tagline"><span class="mini">Own Fleet</span><span class="mini">Scheduled</span></div>
+      </div>
+      <div class="card" style="padding:16px">
+        <strong>3) Logistics Partner Delivery</strong>
+        <div class="note">Nationwide pallet courier. Free £1000+, or £80 below threshold. Next working day where available.</div>
+        <div class="tagline"><span class="mini">Nationwide</span><span class="mini">Tracked</span></div>
+      </div>
+    </div>
+    <div class="grid grid-cols-2" style="margin-top:16px">
+      <div class="card" style="padding:16px">
+        <strong>Coverage & Customs</strong>
+        <div class="note">We deliver across most of the UK. Ireland deliveries incur a £5 per commodity code customs fee.</div>
+      </div>
+      <div class="card" style="padding:16px">
+        <strong>Safe & Convenient</strong>
+        <div class="note">Accurate address details help ensure smooth delivery. Check items on arrival; report issues within 48 hours.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="testimonials">
+  <div class="container">
+    <h3>What Our Business Customers Say</h3>
+    <p class="lead">Trusted by national symbols and independents across the UK.</p>
+    <div class="testimonials">
+      <div class="card quote">
+        <div class="stars">★★★★★</div>
+        <p>Consistently great deals and on-time delivery. The new Fanta and Bravo lines fly off our shelves.</p>
+        <strong>Store Manager · Nisa Partner</strong>
+      </div>
+      <div class="card quote">
+        <div class="stars">★★★★★</div>
+        <p>FoodArt’s sales team understand local tastes. Their ethnic grocery range helped us grow weekly basket size.</p>
+        <strong>Independent Retailer · East London</strong>
+      </div>
+      <div class="card quote">
+        <div class="stars">★★★★★</div>
+        <p>Multilingual support and tailored offers made our launch easy. Collection discount is a bonus.</p>
+        <strong>Premier Store Owner · Midlands</strong>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section cta-footer" id="contact">
+  <div class="container">
+    <div class="grid grid-cols-3">
+      <div class="card" style="padding:16px">
+        <h3>Ready to grow with FoodArt UK?</h3>
+        <p class="lead">Access live pricing, exclusive products, and unbeatable deals today.</p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <a href="https://foodartuk.com/register/" class="cta">Register Now</a>
+          <a href="https://foodartuk.com/shop/" class="cta secondary">Shop Our Range</a>
+          <a href="https://foodartuk.com/contact-us/" class="cta link">Contact Sales Team →</a>
+        </div>
+      </div>
+      <div class="card" style="padding:16px">
+        <strong>Direct Contacts</strong>
+        <div class="note" style="margin-top:8px">
+          Phone: <a href="tel:02088050088">020 8805 0088</a><br>
+          Email: <a href="mailto:info@foodartuk.com">info@foodartuk.com</a><br>
+          WhatsApp: <a href="https://wa.me/447389764369" target="_blank" rel="noopener">+44 07389 764 369</a>
+        </div>
+        <div class="hours" style="margin-top:12px">
+          <div class="slot">Mon–Fri 08:00–17:00</div>
+        </div>
+      </div>
+      <div class="card" style="padding:16px">
+        <strong>Quick Links</strong>
+        <div style="margin-top:8px;display:grid;gap:8px">
+          <a class="cta link" href="https://foodartuk.com/shop/">Shop →</a>
+          <a class="cta link" href="https://foodartuk.com/contact-us/">Contact →</a>
+          <a class="cta link" href="https://foodartuk.com/help-faqs/">Help & FAQs →</a>
+          <a class="cta link" href="https://foodartuk.com/login/">Login →</a>
+          <a class="cta link" href="https://foodartuk.com/register/">Register →</a>
+          <a class="cta link" href="#delivery">Delivery Options →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container" style="padding:22px 0">
+    <div class="footer-grid">
+      <div>
+        <div style="display:flex;align-items:center;gap:12px">
+          <div class="logo" aria-hidden="true"></div>
+          <div>
+            <strong>FoodArt UK Ltd</strong>
+            <div class="note">More than a wholesaler — a reliable business partner.</div>
+          </div>
+        </div>
+        <div class="note" style="margin-top:12px">Ethnic grocery and FMCG wholesaler & distributor serving the UK. Exclusive products, tailored deals, and flexible logistics.</div>
+      </div>
+      <div>
+        <strong>Shop</strong>
+        <div style="display:grid;gap:8px;margin-top:8px">
+          <a href="https://foodartuk.com/shop/">All Products</a>
+          <a href="https://foodartuk.com/category/model/">Confectionery</a>
+          <a href="https://foodartuk.com/shop/">Drinks</a>
+          <a href="https://foodartuk.com/shop/">Crisps</a>
+        </div>
+      </div>
+      <div>
+        <strong>Support</strong>
+        <div style="display:grid;gap:8px;margin-top:8px">
+          <a href="https://foodartuk.com/contact-us/">Contact</a>
+          <a href="https://foodartuk.com/help-faqs/">Help & FAQs</a>
+          <a href="#delivery">Delivery & Collection</a>
+          <a href="mailto:info@foodartuk.com">info@foodartuk.com</a>
+        </div>
+      </div>
+      <div>
+        <strong>Account</strong>
+        <div style="display:grid;gap:8px;margin-top:8px">
+          <a href="https://foodartuk.com/login/">Login</a>
+          <a href="https://foodartuk.com/register/">Register</a>
+          <a href="https://foodartuk.com/checkout/">Checkout</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© FoodArt UK Ltd</div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <a href="https://foodartuk.com/">Home</a>
+        <a href="#about">About</a>
+        <a href="#promotions">Promotions</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const toggle = document.getElementById('menuToggle');
+  const nav = document.getElementById('primaryNav');
+  if(toggle){
+    toggle.addEventListener('click', ()=>{
+      const open = nav.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  }
+
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click', e=>{
+      const id = a.getAttribute('href').slice(1);
+      if(id){
+        const el = document.getElementById(id);
+        if(el){
+          e.preventDefault();
+          el.scrollIntoView({behavior:'smooth',block:'start'});
+          if(nav.classList.contains('open')){ nav.classList.remove('open'); toggle.setAttribute('aria-expanded','false'); }
+        }
+      }
+    });
+  });
+
+  const hoverables = document.querySelectorAll('.cta');
+  hoverables.forEach(btn=>{
+    btn.addEventListener('mouseenter', ()=>btn.classList.add('hovered'));
+    btn.addEventListener('mouseleave', ()=>btn.classList.remove('hovered'));
+    btn.addEventListener('focus', ()=>btn.classList.add('hovered'));
+    btn.addEventListener('blur', ()=>btn.classList.remove('hovered'));
+  });
+
+  function handleNewsletter(emailInputId, btnId, msgId){
+    const input = document.getElementById(emailInputId);
+    const btn = document.getElementById(btnId);
+    const msg = document.getElementById(msgId);
+    if(!input || !btn || !msg) return;
+    btn.addEventListener('click', ()=>{
+      const email = (input.value||'').trim();
+      if(!/^\S+@\S+\.\S+$/.test(email)){
+        msg.textContent = 'Please enter a valid email.';
+        msg.style.color = '#ef4444';
+        return;
+      }
+      msg.textContent = 'Thanks! You will receive our latest deals.';
+      msg.style.color = '#16a34a';
+      input.value = '';
+    });
+  }
+  handleNewsletter('newsletterEmail','newsletterBtn','newsletterMsg');
+  handleNewsletter('newsletterEmail2','newsletterBtn2','newsletterMsg2');
+</script>
+
+<script>
+  window.chatbotConfig = {
+    apiUrl: "https://makeitsimpl.app.n8n.cloud/webhook/chat",
+    websiteUrl: "https://foodartuk.com/",
+    headers: {
+      "Authorization": "Basic Y2hhdGJvdDppbG92ZWNoYXRib3RzITEyMzQ="
+    }
+  };
+</script>
+<script src="https://makeitsimpl.ai/chatbot-widget.js"></script>
+</body>
+</html>
